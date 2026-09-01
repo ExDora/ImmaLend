@@ -12,6 +12,10 @@ class ApproveLendingController extends Controller
      */
     public function __invoke(Request $request)
     {
-        //
+        $title = "ImmaLend - Approve Lending";
+
+        return view('lendings.approve', [
+            'title' => $title
+        ]);
     }
 }

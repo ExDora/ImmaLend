@@ -12,6 +12,10 @@ class ReturnLendingController extends Controller
      */
     public function __invoke(Request $request)
     {
-        //
+        $title = "ImmaLend - Return Lending";
+
+        return view('lendings.return', [
+            'title' => $title
+        ]);
     }
 }

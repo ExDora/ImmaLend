@@ -11,7 +11,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $title = "ImmaLend - Admin List";
+
+        return view('admins.index', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -19,7 +23,11 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        $title = "ImmaLend - Create Admin";
+
+        return view('admins.create', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -27,7 +35,11 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title = "ImmaLend - Store Admin";
+
+        return view('admins.store', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -35,7 +47,11 @@ class AdminController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $title = "ImmaLend - Show Admin";
+
+        return view('admins.show', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -43,7 +59,11 @@ class AdminController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = "ImmaLend - Edit Admin";
+
+        return view('admins.edit', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -51,7 +71,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Melakukan perubahan data admin dengan ID: {$id}";
     }
 
     /**
@@ -59,6 +79,6 @@ class AdminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Menghapus data admin dengan ID: {$id}";
     }
 }

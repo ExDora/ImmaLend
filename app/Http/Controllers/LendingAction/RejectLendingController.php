@@ -12,6 +12,10 @@ class RejectLendingController extends Controller
      */
     public function __invoke(Request $request)
     {
-        //
+        $title = "ImmaLend - Reject Lending";
+
+        return view('lendings.reject', [
+            'title' => $title
+        ]);
     }
 }

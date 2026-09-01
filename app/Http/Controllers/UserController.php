@@ -11,7 +11,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $title = "ImmaLend - Homepage";
+
+        return view('users.index', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -19,7 +23,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $title = "ImmaLend - Create User";
+
+        return view('users.create', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -27,7 +35,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title = "ImmaLend - Store User";
+
+        return view('users.store', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -35,7 +47,11 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $title = "ImmaLend - Show User";
+
+        return view('users.show', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -43,7 +59,11 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = "ImmaLend - Edit User";
+
+        return view('users.edit', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -51,7 +71,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Melakukan perubahan data pengguna dengan ID: {$id}";
     }
 
     /**
@@ -59,6 +79,6 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Menghapus data pengguna dengan ID: {$id}";
     }
 }

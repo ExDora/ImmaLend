@@ -11,7 +11,11 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $title = "ImmaLend - Item List";
+
+        return view('items.index', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -19,7 +23,11 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        $title = "ImmaLend - Create Item";
+
+        return view('items.create', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -27,7 +35,11 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title = "ImmaLend - Store Item";
+
+        return view('items.store', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -35,7 +47,11 @@ class ItemController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $title = "ImmaLend - Show Item";
+
+        return view('items.show', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -43,7 +59,11 @@ class ItemController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = "ImmaLend - Edit Item";
+
+        return view('items.edit', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -51,7 +71,7 @@ class ItemController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Melakukan perubahan data barang dengan ID: {$id}";
     }
 
     /**
@@ -59,6 +79,6 @@ class ItemController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Menghapus data barang dengan ID: {$id}";
     }
 }

@@ -11,7 +11,11 @@ class LendingController extends Controller
      */
     public function index()
     {
-        //
+        $title = "ImmaLend - Lending List";
+
+        return view('lendings.index', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -19,7 +23,11 @@ class LendingController extends Controller
      */
     public function create()
     {
-        //
+        $title = "ImmaLend - Create Lending";
+
+        return view('lendings.create', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -27,7 +35,11 @@ class LendingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title = "ImmaLend - Store Lending";
+
+        return view('lendings.store', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -35,7 +47,11 @@ class LendingController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $title = "ImmaLend - Show Lending";
+
+        return view('lendings.show', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -43,7 +59,11 @@ class LendingController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = "ImmaLend - Edit Lending";
+
+        return view('lendings.edit', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -51,7 +71,7 @@ class LendingController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Melakukan perubahan data peminjaman dengan ID: {$id}";
     }
 
     /**
@@ -59,6 +79,6 @@ class LendingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Menghapus data peminjaman dengan ID: {$id}";
     }
 }
