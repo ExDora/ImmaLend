@@ -25,8 +25,12 @@ Route::resource('users', UserController::class)->names('users');
 Route::resource('admins', AdminController::class);
 
 
+//HomePage
+Route::get('/', function () {return view('home');})->name('home');
+
 //Manajemen Data Barang (Resource)
 Route::resource('items', ItemController::class);
+Route::get('/inventory', function () {return view('items.inventory');})->name('inventory');
 
 
 //Manajemen Data Peminjaman (Resource)
