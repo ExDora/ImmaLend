@@ -17,6 +17,16 @@ Route::get('/', function () {
 });
 
 
+//Login User
+Route::get('/login', [UserLoginController::class, 'create'])->name('login');
+Route::post('/login', [UserLoginController::class, 'store'])->name('login.store');
+
+
+//Login Admin
+Route::get('/admin/login', [AdminLoginController::class, 'create'])->name('admin.login');
+Route::post('/admin/login', [AdminLoginController::class, 'store'])->name('admin.login.store');
+
+
 //Manajemen Data Pengguna (Resource)
 Route::resource('users', UserController::class)->names('users');
 
@@ -35,17 +45,18 @@ Route::get('/inventory', function () {return view('items.inventory');})->name('i
 
 //Manajemen Data Peminjaman (Resource)
 Route::resource('lendings', LendingController::class);
+Route::get('/admin/return-confirmation', [LendingController::class, 'returnConfirmation'])->name('admin.return-confirmation');
 
 
 //Manajemen Data Aksi Peminjaman (Invokable)
-Route::name('classes.')->prefix('classes')->group(function () {
+Route::name('lendings.')->prefix('lendings')->group(function () {
 
     //Manajemen Aksi Disetujui
-    Route::post('/{id}/approve', ApproveLendingController::class)->name('approve');
+    Route::post('/approve', ApproveLendingController::class)->name('approve');
 
     //Manajemen Aksi Ditolak
-    Route::post('/{id}/reject', RejectLendingController::class)->name('reject');
+    Route::post('/reject', RejectLendingController::class)->name('reject');
 
     //Manajemen Aksi Dikembalikan
-    Route::post('/{id}/return', ReturnLendingController::class)->name('return');
+    Route::post('/return', ReturnLendingController::class)->name('return');
 });

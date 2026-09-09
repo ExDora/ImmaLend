@@ -67,6 +67,18 @@ class LendingController extends Controller
     }
 
     /**
+     * Display the return confirmation page.
+     */
+    public function returnConfirmation()
+    {
+        $title = "ImmaLend - Return Confirmation";
+
+        return view('lendings.return-confirmation', [
+            'title' => $title
+        ]);
+    }
+
+    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
