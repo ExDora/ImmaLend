@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\AdminLoginController;
-use App\Http\Controllers\Auth\UserLoginController;
-use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LendingController;
@@ -16,6 +16,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//login user
+//login user
+Route::get('/login', [UserLoginController::class, 'index'])->name('login');
 
 //Manajemen Data Pengguna (Resource)
 Route::resource('users', UserController::class)->names('users');
@@ -44,4 +47,6 @@ Route::name('classes.')->prefix('classes')->group(function () {
 
     //Manajemen Aksi Dikembalikan
     Route::post('/{id}/return', ReturnLendingController::class)->name('return');
+
+    
 });
