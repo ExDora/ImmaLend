@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,13 +18,14 @@
         }
     </style>
 </head>
+
 <body class="min-h-screen flex">
     <!-- Sidebar Start -->
     @include('layouts.partials.sidebar')
     <!-- Sidebar End -->
 
     <!-- Content Start -->
-    <main class="flex-1 min-w-0">
+    <main class="flex-1 min-w-0 ml-[260px]">
 
         <!-- Header Start -->
         @include('layouts.partials.header')
@@ -33,4 +35,5 @@
     </main>
     <!-- Content End -->
 </body>
+
 </html>
