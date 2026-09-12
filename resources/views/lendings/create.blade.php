@@ -200,7 +200,7 @@
                             </div>
 
                             <div class="flex items-center gap-4 pt-2">
-                                <a href="#"
+                                <a href="{{ route('items.index') }}"
                                     class="flex-1 text-center bg-[#B6B6B6] hover:bg-[#a3a3a3] text-white text-sm font-semibold py-3 rounded-xl transition">
                                     Cancel
                                 </a>
