@@ -69,7 +69,7 @@
                 <!-- ITEM GRID -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-6">
 
-                    <!-- Card: HP Chromebook 15 -->
+                    <!-- Card: Monitor LG 24 Inch -->
                     <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 flex flex-col">
                         <div class="h-32 rounded-xl bg-slate-50 flex items-center justify-center mb-3">
                             <svg class="w-16 h-12 text-slate-300" viewBox="0 0 48 32" fill="none" stroke="currentColor"
@@ -80,11 +80,11 @@
                         </div>
                         <span
                             class="self-start text-[11px] font-semibold bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full">Technology</span>
-                        <p class="text-sm font-bold text-[#173863] mt-2">HP Chromebook 15</p>
+                        <p class="text-sm font-bold text-[#173863] mt-2">Monitor LG 24 Inch</p>
                         <div class="flex items-center justify-between mt-2">
                             <span class="flex items-center gap-1.5 text-xs text-green-600 font-medium"><span
                                     class="w-2 h-2 rounded-full bg-green-500"></span>Available</span>
-                            <span class="text-xs text-slate-400">10 units</span>
+                            <span class="text-xs text-slate-400">6 units</span>
                         </div>
                         <button type="button"
                             class="mt-3 bg-[#173863] hover:bg-[#0F2A4D] text-white text-sm font-semibold py-2.5 rounded-xl">Borrow</button>
