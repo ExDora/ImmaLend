@@ -1,248 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Item Form - ImmaLend</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Font Inter & FontAwesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>ImmaLend — User Login</title>
+    <!-- Tailwind utility classes only. Tidak ada <script> / JavaScript di file ini. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body {
+            font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+        }
     </style>
 </head>
-<body class="bg-[#eef2fd] min-h-screen flex text-gray-800">
 
-    <!-- ================= SISI KIRI: SIDEBAR ================= -->
-    <aside class="w-64 bg-[#eef2fd] flex flex-col justify-between py-8 px-6 min-h-screen flex-shrink-0">
-        <div>
-            <!-- Brand Logo & Title (Diubah ke Tengah Vertikal) -->
-            <div class="flex flex-col items-center text-center mb-10 px-2">
-                <!-- Gambar Kardus (Di Tengah) -->
-                <img 
-                    src="{{ asset('images/logo.png') }}" 
-                    alt="ImmaLend Logo" 
-                    class="h-20 w-auto object-contain mb-3"
-                    onerror="this.src='https://via.placeholder.com/80?text=Box'"
-                >
-                <!-- Teks ImmaLend (Di Bawah Kardus) -->
-                <span class="text-2xl font-extrabold text-[#0d2b6b] tracking-tight">ImmaLend</span>
-                <!-- Subtitle (Di Bawah ImmaLend) -->
-                <span class="text-[11px] font-semibold text-[#0d2b6b] tracking-wide mt-1">School Inventory Lending</span>
+<body class="min-h-screen bg-slate-100 flex items-center justify-center p-6">
+
+    <div class="w-full max-w-6xl bg-slate-100 rounded-3xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-center p-4">
+
+        <!-- LEFT ILLUSTRATION PANEL -->
+        <div class="relative bg-white rounded-3xl p-10 overflow-hidden">
+            <svg class="absolute top-8 left-8 w-5 h-5 text-blue-200" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l2 2-2 2-2-2z m0 16l2 2-2 2-2-2z M2 12l2-2 2 2-2 2z m16 0l2-2 2 2-2 2z" />
+            </svg>
+            <svg class="absolute top-10 right-14 w-16 h-2 text-blue-300 rotate-12" fill="none" viewBox="0 0 64 8"
+                stroke="currentColor" stroke-width="4">
+                <path stroke-linecap="round" d="M2 6L62 2" />
+            </svg>
+            <div class="absolute bottom-24 right-10 w-4 h-4 rounded-full bg-blue-200"></div>
+
+            <h1 class="text-4xl font-extrabold text-[#173863] leading-snug relative">Borrow what you need,<br>when you
+                need it.</h1>
+            <p class="text-sm text-slate-400 mt-4 max-w-sm relative">ImmaLend makes it easy to find, request, and manage
+                the items you need for school activities.</p>
+
+            <div class="mt-10 flex items-end gap-4 relative">
+                <svg class="w-28 h-20 text-slate-700" viewBox="0 0 48 32" fill="none" stroke="currentColor"
+                    stroke-width="1.5">
+                    <rect x="2" y="4" width="30" height="20" rx="2" />
+                    <path d="M0 26h34" />
+                </svg>
+                <svg class="w-16 h-12 text-slate-500" viewBox="0 0 48 32" fill="none" stroke="currentColor"
+                    stroke-width="1.5">
+                    <rect x="4" y="8" width="30" height="16" rx="3" />
+                    <circle cx="38" cy="16" r="6" />
+                </svg>
+                <svg class="w-16 h-12 text-slate-400" viewBox="0 0 48 32" fill="none" stroke="currentColor"
+                    stroke-width="1.5">
+                    <circle cx="8" cy="8" r="4" />
+                    <circle cx="40" cy="8" r="4" />
+                    <circle cx="8" cy="24" r="4" />
+                    <circle cx="40" cy="24" r="4" />
+                    <rect x="18" y="12" width="12" height="8" rx="2" />
+                </svg>
             </div>
 
-            <!-- Navigation Links -->
-            <nav class="space-y-4">
-                <a href="{{ url('/') }}" class="flex items-center gap-4 px-3 py-2 text-sm font-semibold text-[#0d2b6b] hover:opacity-80 transition">
-                    <i class="fa-solid fa-house text-lg w-5 text-center"></i>
-                    <span>Home</span>
-                </a>
-                <a href="#" class="flex items-center gap-4 px-3 py-2 text-sm font-semibold text-[#0d2b6b] hover:opacity-80 transition">
-                    <i class="fa-solid fa-list-ul text-lg w-5 text-center"></i>
-                    <span>List of Items</span>
-                </a>
-                <a href="#" class="flex items-center gap-4 px-3 py-2 text-sm font-semibold text-[#0d2b6b] hover:opacity-80 transition">
-                    <i class="fa-regular fa-file-lines text-lg w-5 text-center"></i>
-                    <span>My Borrowings</span>
-                </a>
-                <a href="#" class="flex items-center gap-4 px-3 py-2 text-sm font-semibold text-[#0d2b6b] hover:opacity-80 transition">
-                    <i class="fa-solid fa-clock-rotate-left text-lg w-5 text-center"></i>
-                    <span>Borrowings History</span>
-                </a>
-            </nav>
+            <svg class="absolute bottom-6 left-10 w-6 h-2 text-blue-300" fill="none" viewBox="0 0 24 8"
+                stroke="currentColor" stroke-width="4">
+                <path stroke-linecap="round" d="M2 4h20" />
+            </svg>
         </div>
 
-        <!-- Help Link -->
-        <div>
-            <a href="#" class="flex items-center gap-4 px-3 py-2 text-sm font-semibold text-[#0d2b6b] hover:opacity-80 transition">
-                <i class="fa-regular fa-circle-question text-lg w-5 text-center"></i>
-                <span>Help</span>
-            </a>
-        </div>
-    </aside>
+        <!-- RIGHT LOGIN PANEL -->
+        <div class="relative px-4 lg:px-10 py-10">
 
-    <!-- ================= AREA UTAMA (KANAN) ================= -->
-    <div class="flex-1 flex flex-col min-w-0 bg-white rounded-l-[32px] overflow-hidden shadow-2xl">
-        
-        <!-- HEADER TOPBAR -->
-        <header class="h-20 bg-[#eef2fd] flex items-center justify-between px-8 border-b border-blue-50/50">
-            <div class="flex items-center gap-4">
-                <button class="text-[#0d2b6b] hover:opacity-75 focus:outline-none">
-                    <i class="fa-solid fa-bars text-xl"></i>
-                </button>
-                <div class="flex flex-col">
-                    <span class="text-xs font-semibold text-[#0d2b6b]">Welcome!</span>
-                    <span class="text-[11px] text-[#0d2b6b] opacity-80">Find the items you're looking for.</span>
-                </div>
-            </div>
-            <!-- Profile Icon -->
-            <div class="flex items-center">
-                <a href="#" class="w-9 h-9 rounded-full bg-[#0d2b6b] flex items-center justify-center text-white hover:opacity-90 transition">
-                    <i class="fa-regular fa-user text-base"></i>
-                </a>
-            </div>
-        </header>
+            <p
+                class="absolute inset-0 flex items-center justify-center text-6xl font-extrabold text-slate-200/60 select-none pointer-events-none leading-none text-center">
+                KRISTEN<br>IMMANUEL
+            </p>
 
-        <!-- CONTENT AREA -->
-        <main class="flex-1 p-8 bg-white overflow-y-auto flex justify-center items-start">
-            <div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                
-                <!-- KARTU FORM (SEBELAH KIRI - 7/12 COLUMNS) -->
-                <div class="lg:col-span-7 bg-[#eef2fd]/60 border border-slate-200/60 rounded-[32px] p-8 shadow-sm">
-                    
-                    <!-- Judul Form -->
-                    <div class="text-center mb-8">
-                        <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Request Item Form</h1>
-                        <p class="text-xs text-gray-700 font-medium mt-1">SMK Kristen Immanuel Pontianak</p>
-                    </div>
-
-                    <!-- Form Input -->
-                    <form action="#" method="POST" class="space-y-5">
-                        @csrf
-
-                        <!-- Field 1: Name -->
-                        <div>
-                            <label class="flex items-center gap-2 text-xs font-bold text-gray-800 mb-2">
-                                <i class="fa-regular fa-id-card text-sm"></i>
-                                <span>Name</span>
-                            </label>
-                            <input 
-                                type="text" 
-                                name="name" 
-                                placeholder="Type your fullname here"
-                                class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs text-gray-700 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0d2b6b]/20 focus:border-[#0d2b6b] transition"
-                            >
-                        </div>
-
-                        <!-- Field 2: Class -->
-                        <div>
-                            <label class="flex items-center gap-2 text-xs font-bold text-gray-800 mb-2">
-                                <i class="fa-solid fa-users text-sm"></i>
-                                <span>Class</span>
-                            </label>
-                            <input 
-                                type="text" 
-                                name="class" 
-                                placeholder="Choose your class here"
-                                class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs text-gray-700 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0d2b6b]/20 focus:border-[#0d2b6b] transition"
-                            >
-                        </div>
-
-                        <!-- Field 3: Name of Item & Category (2 Kolom Sejajar) -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-bold text-gray-800 mb-2">Name of Item</label>
-                                <input 
-                                    type="text" 
-                                    name="item_name" 
-                                    placeholder="Type the name of the item here"
-                                    class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs text-gray-700 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0d2b6b]/20 focus:border-[#0d2b6b] transition"
-                                >
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-gray-800 mb-2">Category</label>
-                                <input 
-                                    type="text" 
-                                    name="category" 
-                                    placeholder="Choose or add category here"
-                                    class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs text-gray-700 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0d2b6b]/20 focus:border-[#0d2b6b] transition"
-                                >
-                            </div>
-                        </div>
-
-                        <!-- Field 4: Reason of Request -->
-                        <div>
-                            <label class="flex items-center gap-2 text-xs font-bold text-gray-800 mb-2">
-                                <i class="fa-regular fa-comment-dots text-sm"></i>
-                                <span>Reason of Request</span>
-                            </label>
-                            <textarea 
-                                name="reason" 
-                                rows="4" 
-                                placeholder="Explain your reasonings here"
-                                class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs text-gray-700 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0d2b6b]/20 focus:border-[#0d2b6b] transition resize-none"
-                            ></textarea>
-                        </div>
-
-                        <!-- Checkbox Persetujuan -->
-                        <div class="flex items-center justify-end gap-2 pt-2">
-                            <input 
-                                type="checkbox" 
-                                id="terms" 
-                                name="terms" 
-                                class="w-4 h-4 rounded border-gray-300 text-[#0d2b6b] focus:ring-0 cursor-pointer"
-                            >
-                            <label for="terms" class="text-[11px] font-semibold text-gray-700 cursor-pointer select-none">
-                                I have read the Request Conditions
-                            </label>
-                        </div>
-
-                        <!-- Tombol Action (Cancel & Submit) -->
-                        <div class="grid grid-cols-2 gap-4 pt-4">
-                            <button 
-                                type="button" 
-                                class="w-full bg-[#b8b8b8] hover:bg-[#a3a3a3] text-gray-800 font-bold py-3 rounded-xl text-xs transition duration-200"
-                            >
-                                Cancel
-                            </button>
-                            <button 
-                                type="submit" 
-                                class="w-full bg-[#0d2b6b] hover:bg-[#0a2152] text-white font-bold py-3 rounded-xl text-xs transition duration-200 shadow-md"
-                            >
-                                Submit Request
-                            </button>
-                        </div>
-                    </form>
+            <div class="relative">
+                <div class="flex items-center justify-center gap-2 mb-6">
+                    <svg class="w-6 h-6 text-[#173863]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                    </svg>
+                    <span class="text-lg font-extrabold text-[#173863]">ImmaLend</span>
                 </div>
 
-                <!-- KARTU CONDITIONS (SEBELAH KANAN - 5/12 COLUMNS) -->
-                <div class="lg:col-span-5 bg-white border border-gray-200 rounded-[32px] p-8 shadow-sm flex flex-col justify-between min-h-[580px]">
+                <h1 class="text-4xl font-extrabold text-slate-900 text-center">Welcome Back!</h1>
+                <p class="text-sm text-slate-400 text-center mt-2 mb-8">Enter Your Details below</p>
+
+                <form action="" method="POST" class="space-y-6">
+                    @csrf
+
                     <div>
-                        <!-- Icon Info Besar -->
-                        <div class="flex justify-center mb-4">
-                            <div class="w-16 h-16 rounded-full bg-black text-white flex items-center justify-center">
-                                <i class="fa-solid fa-info text-2xl"></i>
-                            </div>
+                        <label for="email" class="block text-sm text-slate-500 mb-1">Email</label>
+                        <input type="email" id="email" name="email"
+                            class="w-full border-0 border-b border-slate-300 focus:border-[#173863] outline-none py-2 text-sm text-slate-700 bg-transparent">
+                    </div>
+
+                    <div>
+                        <label for="password" class="block text-sm text-slate-500 mb-1">Password</label>
+                        <div class="flex items-center border-b border-slate-300 focus-within:border-[#173863]">
+                            <input type="password" id="password" name="password"
+                                class="w-full border-0 outline-none py-2 text-sm text-slate-700 bg-transparent">
+                            <svg class="w-5 h-5 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="1.8">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
                         </div>
-
-                        <!-- Judul Request Conditions -->
-                        <h2 class="text-xl font-bold text-center text-gray-900 mb-6">Request Conditions</h2>
-
-                        <!-- Daftar Syarat (Numbered List) -->
-                        <ol class="space-y-4 text-[11px] text-gray-700 font-semibold leading-relaxed">
-                            <li class="border-b border-gray-100 pb-3">
-                                1. Items that are already available but not listed here will be processed within 24 hours.
-                            </li>
-                            <li class="border-b border-gray-100 pb-3">
-                                2. Items that are unavailable could take between weeks to month to be provided.
-                            </li>
-                            <li class="border-b border-gray-100 pb-3">
-                                3. Item requests have to be reasonable, useful, appropriate, and only used for learning purposes.
-                            </li>
-                            <li class="border-b border-gray-100 pb-3">
-                                4. Any troll or prank request will result in penalties.
-                            </li>
-                            <li class="border-b border-gray-100 pb-3">
-                                5. You will be notified if your request is accepted or rejected.
-                            </li>
-                        </ol>
                     </div>
 
-                    <!-- Footer Kartu Conditions (Need help?) -->
-                    <div class="pt-6">
-                        <a href="#" class="flex items-center gap-2 text-[11px] font-bold text-gray-800 hover:text-[#0d2b6b] transition">
-                            <i class="fa-solid fa-circle-question text-sm"></i>
-                            <span>Need help?</span>
-                        </a>
+                    <div class="flex items-center justify-between text-sm">
+                        <label class="flex items-center gap-2 text-slate-500">
+                            <input type="checkbox" name="remember"
+                                class="w-4 h-4 rounded border-slate-300 text-teal-700">
+                            Remember me
+                        </label>
+                        <a href="" class="text-slate-500 hover:text-teal-700">Forgot password?</a>
                     </div>
-                </div>
 
+                    <button type="submit"
+                        class="w-full bg-teal-800 hover:bg-teal-900 text-white text-sm font-semibold py-3.5 rounded-xl">Log
+                        In</button>
+
+                    <button type="button"
+                        class="w-full flex items-center justify-center gap-3 border border-slate-200 text-slate-700 text-sm font-semibold py-3.5 rounded-xl bg-white">
+                        <svg class="w-5 h-5" viewBox="0 0 48 48">
+                            <path fill="#FFC107"
+                                d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z" />
+                            <path fill="#FF3D00"
+                                d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z" />
+                            <path fill="#4CAF50"
+                                d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z" />
+                            <path fill="#1976D2"
+                                d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z" />
+                        </svg>
+                        Log in with Google
+                    </button>
+                </form>
             </div>
-        </main>
+        </div>
+
     </div>
 
 </body>
+
 </html>

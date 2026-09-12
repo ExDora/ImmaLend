@@ -20,9 +20,9 @@
 </head>
 
 <body class="min-h-screen flex">
-    <!-- Sidebar Start -->
-    @include('layouts.partials.sidebar')
-    <!-- Sidebar End -->
+    <!-- Admin Sidebar Start -->
+    @include('layouts.partials.admin-sidebar')
+    <!-- Admin Sidebar End -->
 
     <!-- Content Start -->
     <main class="flex-1 min-w-0 ml-[260px]">

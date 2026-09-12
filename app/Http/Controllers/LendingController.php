@@ -18,6 +18,13 @@ class LendingController extends Controller
         ]);
     }
 
+    public function adminIndex()
+    {
+        return view('lendings.admin-index', [
+            'title' => 'Borrowing Requests'
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -62,6 +69,18 @@ class LendingController extends Controller
         $title = "ImmaLend - Edit Lending";
 
         return view('lendings.edit', [
+            'title' => $title
+        ]);
+    }
+
+    /**
+     * Display the return confirmation page.
+     */
+    public function returnConfirmation()
+    {
+        $title = "ImmaLend - Return Confirmation";
+
+        return view('lendings.return-confirmation', [
             'title' => $title
         ]);
     }
