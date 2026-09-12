@@ -1,58 +1,383 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📦 ImmaLend
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### School Inventory Lending System
 
-## About Laravel
+ImmaLend is a web-based school inventory lending system designed to make borrowing school equipment and rooms easier, more organized, and more efficient.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+From requesting a projector for a presentation to borrowing a studio for school activities, ImmaLend brings the entire lending process into one simple platform.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✨ What is ImmaLend?
 
-## Learning Laravel
+Managing school inventory can sometimes be complicated when everything is handled manually.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+ImmaLend provides a centralized platform where students, teachers, and administrators can manage the lending process more easily.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+With ImmaLend, users can:
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- 👨‍🎓 View available school equipment and rooms
+- 📝 Submit borrowing requests
+- 🔎 Track borrowing status
+- 📚 View borrowing history
+- 👨‍💼 Manage borrowing requests
+- 📦 Manage school inventory
+- 🔄 Confirm returned items
 
-## Agentic Development
+> **Our goal is simple: Make school borrowing easier, clearer, and more organized.**
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
-```bash
-composer require laravel/boost --dev
+## 🚀 Features
 
-php artisan boost:install
+### 👤 User Features
+
+Users can:
+
+- 🔐 Login to the system
+- 🏠 Access the homepage
+- 📦 View available items and rooms
+- 💡 Request new items
+- 📝 Submit item borrowing requests
+- ⏳ Track pending borrowing requests
+- 📋 View current borrowings
+- 📚 View borrowing history
+- 👤 Manage their profile
+
+### 🛠️ Admin Features
+
+Administrators can:
+
+- 🔐 Login through the admin login page
+- 👥 Manage users
+- 📦 Manage school inventory
+- ➕ Add new items
+- ✏️ Edit item information
+- 🗑️ Delete items
+- 📋 Review borrowing requests
+- ✅ Approve borrowing requests
+- ❌ Reject borrowing requests
+- 🔄 Confirm returned items
+- 📚 View borrowing history
+
+---
+
+## 🧩 Main Entities
+
+ImmaLend is built around four main entities:
+
+| Entity | Description |
+|---|---|
+| 👤 **User** | Students and teachers who use the lending system |
+| 🛠️ **Admin** | Users responsible for managing the system |
+| 📦 **Item** | School equipment and rooms available for lending |
+| 📋 **Lending** | Records of borrowing requests and their status |
+
+---
+
+## 🔄 How It Works
+
+### 👤 User Flow
+
+```text
+Login
+  ↓
+Homepage
+  ↓
+View Items
+  ↓
+Request Item
+  ↓
+Track Borrowing
+  ↓
+Borrowing History
+````
+
+### 🛠️ Admin Flow
+
+```text
+Admin Login
+     ↓
+Manage Inventory & Users
+     ↓
+Review Borrowing Requests
+     ↓
+Approve / Reject
+     ↓
+Confirm Item Return
+     ↓
+Borrowing History
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## 🎨 Design
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+ImmaLend uses a clean, modern, and user-friendly interface designed for a school environment.
 
-## Code of Conduct
+### Design Principles
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* 🎯 Simple and intuitive navigation
+* 🧹 Clean and organized layouts
+* 📝 Easy-to-understand forms
+* 🔵 Blue-based visual identity
+* 🧩 Consistent design components
+* 👤 Separate User and Admin experiences
+* 📱 Responsive and practical interface
 
-## Security Vulnerabilities
+The interface focuses on making every important action easy to find, from requesting an item to checking its borrowing status.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 💻 Tech Stack
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+| Technology              | Purpose                                 |
+| ----------------------- | --------------------------------------- |
+| 🐘 **PHP**              | Backend programming language            |
+| 🔥 **Laravel 13**       | Web application framework               |
+| 🎨 **Tailwind CSS**     | User interface styling                  |
+| ⚡ **Vite**              | Frontend development and asset bundling |
+| 🧱 **Blade**            | Laravel templating engine               |
+| 🗄️ **MySQL / MariaDB** | Database                                |
+| 🖥️ **Laragon**         | Local development environment           |
+
+---
+
+## 📂 Project Structure
+
+```text
+immalend/
+│
+├── app/
+│   ├── Http/
+│   │   └── Controllers/
+│   │       ├── Auth/
+│   │       │   ├── AdminLoginController.php
+│   │       │   ├── LogoutController.php
+│   │       │   └── UserLoginController.php
+│   │       │
+│   │       ├── LendingAction/
+│   │       │   ├── ApproveLendingController.php
+│   │       │   ├── RejectLendingController.php
+│   │       │   └── ReturnLendingController.php
+│   │       │
+│   │       ├── AdminController.php
+│   │       ├── ItemController.php
+│   │       ├── LendingController.php
+│   │       └── UserController.php
+│   │
+│   └── Models/
+│       └── User.php
+│
+├── resources/
+│   └── views/
+│       ├── admins/
+│       ├── Auth/
+│       ├── items/
+│       ├── layouts/
+│       │   └── partials/
+│       ├── lendings/
+│       ├── users/
+│       ├── home.blade.php
+│       └── welcome.blade.php
+│
+├── routes/
+│   └── web.php
+│
+├── public/
+├── database/
+├── package.json
+├── composer.json
+└── README.md
+```
+
+---
+
+## 🔐 Access
+
+### 👤 User Login
+
+```text
+/login
+```
+
+Regular users such as students and teachers can access the system through the standard login page.
+
+### 🛠️ Admin Login
+
+```text
+/admin/login
+```
+
+Administrators have a separate login page with access to management features that are not available to regular users.
+
+---
+
+## ⚙️ Installation
+
+Follow these steps to run ImmaLend on your local machine.
+
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+```
+
+### 2. Open the Project Folder
+
+```bash
+cd immalend
+```
+
+### 3. Install PHP Dependencies
+
+```bash
+composer install
+```
+
+### 4. Install Frontend Dependencies
+
+```bash
+npm install
+```
+
+### 5. Create the Environment File
+
+```bash
+cp .env.example .env
+```
+
+For Windows, you can manually copy `.env.example` and rename it to:
+
+```text
+.env
+```
+
+### 6. Generate the Application Key
+
+```bash
+php artisan key:generate
+```
+
+### 7. Configure the Database
+
+Open the `.env` file and configure your database:
+
+```env
+DB_DATABASE=immalend
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Make sure the `immalend` database has already been created.
+
+### 8. Run Database Migrations
+
+```bash
+php artisan migrate
+```
+
+### 9. Start the Application
+
+Start the Application
+
+Run the development environment with:
+
+```bash
+composer run dev
+```
+
+Then open the application in your browser:
+
+```text
+http://localhost:8000
+```
+
+---
+
+## 👥 Development Team
+
+| Member                      | Role               |
+| --------------------------- | ------------------ |
+| **Forensya Hani**           | Backend Developer  |
+| **Hernandez Lim**           | Frontend Developer |
+| **Quinlen Medelline**       | Backend Developer  |
+| **Sandrika Marcella Jolie** | UI/UX Designer     |
+
+### 🎯 Team Contributions
+
+#### Forensya Hani
+
+Responsible for backend development and server-side functionality, including system logic and data processing.
+
+#### Hernandez Lim
+
+Responsible for frontend development and implementing the user interface into the web application.
+
+#### Quinlen Medelline
+
+Responsible for backend development and supporting the implementation of system functionality and data management.
+
+#### Sandrika Marcella Jolie
+
+Responsible for UI/UX design, interface layout, visual consistency, and overall user experience.
+
+---
+
+## 📌 Project Goals
+
+ImmaLend was developed with the following goals:
+
+1. Make the school borrowing process easier.
+2. Reduce manual inventory management.
+3. Help students and teachers track their borrowing requests.
+4. Help administrators manage inventory efficiently.
+5. Keep borrowing records organized.
+6. Provide a simple and user-friendly experience.
+7. Create a practical solution to a real school environment problem.
+
+---
+
+## 🌱 Future Improvements
+
+ImmaLend can be further developed with additional features such as:
+
+* 📧 Email notifications for borrowing status
+* 📊 Admin dashboard with borrowing statistics
+* 🔔 Real-time borrowing notifications
+* 📱 Improved mobile responsiveness
+* 🔎 Advanced item search and filtering
+* 📅 Calendar-based borrowing schedules
+* 👥 More detailed role and permission management
+* 📈 Inventory usage reports
+
+---
+
+## 📚 Project Information
+
+| Information                 | Details                               |
+| --------------------------- | ------------------------------------- |
+| **Project Name**            | ImmaLend                              |
+| **Type**                    | School Web Application                |
+| **Category**                | Inventory & Lending Management System |
+| **Framework**               | Laravel 13                            |
+| **Frontend**                | Blade + Tailwind CSS                  |
+| **Backend**                 | Laravel + PHP                         |
+| **Database**                | MySQL                                 |
+| **Development Environment** | Laragon                               |
+
+---
+
+## 💙 Built With
+
+ImmaLend was built as a collaborative school project by a team of students with different roles in backend development, frontend development, and UI/UX design.
+
+The project combines technical development and interface design to create a practical lending management system for schools.
+
+---
+
+## ⭐ ImmaLend
+
+> **Borrow smarter. Manage better. Stay organized.** 📦
+
+Made with 💙 by the ImmaLend Team.
