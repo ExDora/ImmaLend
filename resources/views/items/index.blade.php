@@ -54,16 +54,26 @@
                         </button>
                     </div>
 
-                    <form action="#" method="GET"
-                        class="flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-4 py-2.5 w-full md:w-72">
-                        <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
-                        </svg>
-                        <input type="text" name="search" placeholder="Search items..."
-                            class="w-full text-sm text-slate-600 placeholder-slate-400 outline-none bg-transparent">
-                    </form>
+                    <div class="flex items-center gap-3">
+                        <form action="#" method="GET"
+                            class="flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-4 py-2.5 w-full md:w-72">
+                            <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
+                            </svg>
+                            <input type="text" name="search" placeholder="Search items..."
+                                class="w-full text-sm text-slate-600 placeholder-slate-400 outline-none bg-transparent">
+                        </form>
+
+                        <a href="{{ route('lendings.create') }}"
+                            class="flex items-center justify-center gap-2 bg-[#173863] hover:bg-[#0F2A4D] text-white text-sm font-semibold px-5 py-2.5 rounded-xl whitespace-nowrap">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" d="M12 5v14M5 12h14" />
+                            </svg>
+                            Request Item
+                        </a>
+                    </div>
                 </div>
 
                 <!-- ITEM GRID -->
