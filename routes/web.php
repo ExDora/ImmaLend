@@ -31,10 +31,12 @@ Route::resource('admins', AdminController::class);
 //Manajemen Data Barang (Resource)
 Route::resource('items', ItemController::class);
 
+    //Request Barang
+    Route::get('/request', [ItemController::class, 'request'])->name('request.item');
+
 
 //Manajemen Data Peminjaman (Resource)
 Route::resource('lendings', LendingController::class);
-
 
 //Manajemen Data Aksi Peminjaman (Invokable)
 Route::name('classes.')->prefix('classes')->group(function () {
@@ -47,6 +49,5 @@ Route::name('classes.')->prefix('classes')->group(function () {
 
     //Manajemen Aksi Dikembalikan
     Route::post('/{id}/return', ReturnLendingController::class)->name('return');
-
     
 });

@@ -81,4 +81,17 @@ class ItemController extends Controller
     {
         return "Menghapus data barang dengan ID: {$id}";
     }
+
+    /**
+     * Display the request item form.
+     */
+    public function request()
+    {
+        $title = "ImmaLend - Request Item";
+
+        return view('request', [
+            'title' => $title
+        ]);
+    }
+
 }
