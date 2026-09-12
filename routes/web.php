@@ -17,17 +17,7 @@ Route::get('/', function () {
 });
 
 //login user
-//login user
 Route::get('/login', [UserLoginController::class, 'index'])->name('login');
-
-//Login User
-Route::get('/login', [UserLoginController::class, 'create'])->name('login');
-Route::post('/login', [UserLoginController::class, 'store'])->name('login.store');
-
-
-//Login Admin
-Route::get('/admin/login', [AdminLoginController::class, 'create'])->name('admin.login');
-Route::post('/admin/login', [AdminLoginController::class, 'store'])->name('admin.login.store');
 
 
 //Manajemen Data Pengguna (Resource)
@@ -41,18 +31,21 @@ Route::resource('admins', AdminController::class);
 //HomePage
 Route::get('/', function () {return view('home');})->name('home');
 
+
+//Request Barang
+Route::get('/items/request', [ItemController::class, 'requestItemForm'])->name('items.request');
+
+
 //Manajemen Data Barang (Resource)
 Route::resource('items', ItemController::class);
 Route::get('/inventory', function () {return view('items.inventory');})->name('inventory');
-
-    //Request Barang
-    Route::get('/request', [ItemController::class, 'request'])->name('request.item');
 
 
 //Manajemen Data Peminjaman (Resource)
 Route::resource('lendings', LendingController::class);
 Route::get('/admin/borrowing-requests', [LendingController::class, 'adminIndex'])->name('lendings.admin-index');
 Route::get('/admin/return-confirmation', [LendingController::class, 'returnConfirmation'])->name('admin.return-confirmation');
+
 
 //Manajemen Data Aksi Peminjaman (Invokable)
 Route::name('lendings.')->prefix('lendings')->group(function () {
