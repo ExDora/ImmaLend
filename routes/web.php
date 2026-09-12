@@ -45,6 +45,7 @@ Route::get('/inventory', function () {return view('items.inventory');})->name('i
 
 //Manajemen Data Peminjaman (Resource)
 Route::resource('lendings', LendingController::class);
+Route::get('/admin/borrowing-requests', [LendingController::class, 'adminIndex'])->name('lendings.admin-index');
 Route::get('/admin/return-confirmation', [LendingController::class, 'returnConfirmation'])->name('admin.return-confirmation');
 
 

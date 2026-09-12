@@ -18,6 +18,15 @@ class LendingController extends Controller
         ]);
     }
 
+    public function adminIndex()
+    {
+        $title = "ImmaLend - Borrowing Requests";
+
+        return view('lendings.admin-index', [
+            'title' => $title
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

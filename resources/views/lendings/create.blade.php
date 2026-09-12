@@ -6,27 +6,77 @@
     <div class="min-h-screen flex">
 
         <!-- ============ SIDEBAR ============ -->
-        
+
         <!-- ============ MAIN ============ -->
         <div class="flex-1 min-w-0">
 
             <!-- HEADER -->
-            
-            <main class="p-8">
-                <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start">
 
-                    <!-- FORM CARD -->
-                    <div class="xl:col-span-2 bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
-                        <div class="bg-gradient-to-r from-sky-300 to-blue-500 px-8 py-6">
-                            <h1 class="text-2xl font-extrabold text-white">Item Borrowing Form</h1>
-                            <p class="text-sm text-blue-50 mt-1">SMK Kristen Immanuel Pontianak</p>
+            <main class="p-8">
+                <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+
+                    <!-- ============ LEFT COLUMN: ITEM PREVIEW ============ -->
+                    <div class="xl:col-span-1 flex flex-col gap-6 h-full">
+
+                        <!-- ITEM IMAGE + INFO CARD -->
+                        <div class="bg-[#EEF2F6] border border-[#B6B6B6] rounded-2xl p-5 shrink-0">
+                            <div class="bg-white rounded-xl h-44 flex items-center justify-center overflow-hidden">
+                                <svg class="w-20 h-16 text-slate-300" viewBox="0 0 48 32" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <rect x="6" y="4" width="36" height="20" rx="2" />
+                                    <path d="M18 28h12M24 24v4" stroke-linecap="round" />
+                                </svg>
+                            </div>
+
+                            <span
+                                class="inline-block mt-4 text-[11px] font-semibold bg-blue-100 text-[#082B6D] px-2.5 py-1 rounded-full">
+                                Technology
+                            </span>
+
+                            <p class="text-sm font-bold text-[#082B6D] mt-2">Monitor LG 24 Inch</p>
+
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="flex items-center gap-1.5 text-xs text-green-600 font-medium">
+                                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                                    Available
+                                </span>
+                                <span class="text-xs text-slate-500">6 units</span>
+                            </div>
                         </div>
 
-                        <form action="#" method="POST" class="p-8 space-y-5">
+                        <!-- ITEM DETAILS CARD -->
+                        <div class="bg-[#EEF2F6] border border-[#B6B6B6] rounded-2xl p-6 flex-1">
+                            <h2 class="text-lg font-bold text-[#082B6D] text-center mb-4">Item Details</h2>
+
+                            <div class="text-sm text-slate-700 leading-relaxed space-y-0.5">
+                                <p><span class="font-semibold text-[#082B6D]">Item Name:</span> LG 24-Inch Monitor</p>
+                                <p><span class="font-semibold text-[#082B6D]">Item Code:</span> TEK-006</p>
+                                <p><span class="font-semibold text-[#082B6D]">Category:</span> Monitor</p>
+                                <p><span class="font-semibold text-[#082B6D]">Location:</span> Computer Lab 2</p>
+                                <p><span class="font-semibold text-[#082B6D]">Condition:</span> Good</p>
+                            </div>
+
+                            <div class="mt-4 text-sm text-slate-700 leading-relaxed">
+                                <p class="font-semibold text-[#082B6D] mb-1">Specifications:</p>
+                                <p>LG 24-inch monitor, Full HD 1920 x 1080 resolution, IPS panel, up to 75 Hz refresh
+                                    rate, HDMI and VGA connectivity, and widescreen display.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============ RIGHT COLUMN: FORM ============ -->
+                    <div class="xl:col-span-2 bg-[#EEF2F6] border border-[#B6B6B6] rounded-2xl p-8">
+
+                        <div class="text-center mb-6">
+                            <h1 class="text-2xl font-extrabold text-[#082B6D]">Item Borrowing Form</h1>
+                            <p class="text-sm text-slate-500 mt-1">SMK Kristen Immanuel Pontianak</p>
+                        </div>
+
+                        <form action="{{ route('lendings.store') }}" method="POST" class="space-y-5">
                             @csrf
 
                             <div>
-                                <label for="name" class="flex items-center gap-2 text-sm font-semibold text-[#173863] mb-2">
+                                <label for="name" class="flex items-center gap-2 text-sm font-semibold text-[#082B6D] mb-2">
                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                         stroke-width="1.8">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -35,12 +85,12 @@
                                     Name
                                 </label>
                                 <input type="text" id="name" name="name" placeholder="Type your fullname here"
-                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-600 placeholder-slate-400 outline-none focus:border-[#173863]">
+                                    class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-700 placeholder-slate-400 outline-none focus:border-[#082B6D]">
                             </div>
 
                             <div>
                                 <label for="class"
-                                    class="flex items-center gap-2 text-sm font-semibold text-[#173863] mb-2">
+                                    class="flex items-center gap-2 text-sm font-semibold text-[#082B6D] mb-2">
                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                         stroke-width="1.8">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -49,7 +99,7 @@
                                     Class
                                 </label>
                                 <select id="class" name="class_id"
-                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-400 outline-none focus:border-[#173863]">
+                                    class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-400 outline-none focus:border-[#082B6D]">
                                     <option value="" selected disabled>Choose your class here</option>
                                 </select>
                             </div>
@@ -57,7 +107,7 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
                                     <label for="item"
-                                        class="flex items-center gap-2 text-sm font-semibold text-[#173863] mb-2">
+                                        class="flex items-center gap-2 text-sm font-semibold text-[#082B6D] mb-2">
                                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                             stroke-width="1.8">
                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -66,13 +116,13 @@
                                         Item to be borrowed
                                     </label>
                                     <select id="item" name="item_id"
-                                        class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-400 outline-none focus:border-[#173863]">
-                                        <option value="" selected disabled></option>
+                                        class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:border-[#082B6D]">
+                                        <option value="1" selected>Monitor LG 24 Inch</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label for="amount"
-                                        class="flex items-center gap-2 text-sm font-semibold text-[#173863] mb-2">
+                                        class="flex items-center gap-2 text-sm font-semibold text-[#082B6D] mb-2">
                                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                             stroke-width="1.8">
                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -80,20 +130,20 @@
                                         </svg>
                                         Amount
                                     </label>
-                                    <div class="flex items-center border border-slate-200 rounded-xl px-4 py-1">
-                                        <input type="number" id="amount" name="amount" min="1"
+                                    <div class="flex items-center bg-white border border-[#B6B6B6] rounded-xl px-4 py-1">
+                                        <input type="number" id="amount" name="amount" min="1" value="1"
                                             placeholder="Choose the amount of item here"
-                                            class="flex-1 py-2 text-sm text-slate-400 placeholder-slate-400 outline-none min-w-0">
+                                            class="flex-1 py-2 text-sm text-slate-700 placeholder-slate-400 outline-none min-w-0 bg-transparent">
                                         <div class="flex items-center gap-2 shrink-0">
                                             <button type="button"
-                                                class="w-7 h-7 rounded-full bg-[#173863] text-white flex items-center justify-center">
+                                                class="w-7 h-7 rounded-full bg-[#082B6D] text-white flex items-center justify-center">
                                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                                     stroke-width="2">
                                                     <path stroke-linecap="round" d="M5 12h14" />
                                                 </svg>
                                             </button>
                                             <button type="button"
-                                                class="w-7 h-7 rounded-full bg-[#173863] text-white flex items-center justify-center">
+                                                class="w-7 h-7 rounded-full bg-[#082B6D] text-white flex items-center justify-center">
                                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                                     stroke-width="2">
                                                     <path stroke-linecap="round" d="M12 5v14M5 12h14" />
@@ -107,7 +157,7 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
                                     <label for="borrow_date"
-                                        class="flex items-center gap-2 text-sm font-semibold text-[#173863] mb-2">
+                                        class="flex items-center gap-2 text-sm font-semibold text-[#082B6D] mb-2">
                                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                             stroke-width="1.8">
                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -117,11 +167,11 @@
                                     </label>
                                     <input type="date" id="borrow_date" name="borrow_date"
                                         placeholder="Choose the date here"
-                                        class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-400 outline-none focus:border-[#173863]">
+                                        class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-500 outline-none focus:border-[#082B6D]">
                                 </div>
                                 <div>
                                     <label for="return_date"
-                                        class="flex items-center gap-2 text-sm font-semibold text-[#173863] mb-2">
+                                        class="flex items-center gap-2 text-sm font-semibold text-[#082B6D] mb-2">
                                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                             stroke-width="1.8">
                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -131,13 +181,13 @@
                                     </label>
                                     <input type="date" id="return_date" name="return_date"
                                         placeholder="Choose the date here"
-                                        class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-400 outline-none focus:border-[#173863]">
+                                        class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-500 outline-none focus:border-[#082B6D]">
                                 </div>
                             </div>
 
                             <div>
                                 <label for="reason"
-                                    class="flex items-center gap-2 text-sm font-semibold text-[#173863] mb-2">
+                                    class="flex items-center gap-2 text-sm font-semibold text-[#082B6D] mb-2">
                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                         stroke-width="1.8">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -146,83 +196,20 @@
                                     Reason for borrowing
                                 </label>
                                 <textarea id="reason" name="reason" rows="4" placeholder="Explain your reasonings here"
-                                    class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-400 placeholder-slate-400 outline-none resize-none focus:border-[#173863]"></textarea>
+                                    class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-700 placeholder-slate-400 outline-none resize-none focus:border-[#082B6D]"></textarea>
                             </div>
 
                             <div class="flex items-center gap-4 pt-2">
-                                <button type="reset"
-                                    class="flex-1 bg-slate-400 hover:bg-slate-500 text-white text-sm font-semibold py-3 rounded-xl">Cancel</button>
+                                <a href="#"
+                                    class="flex-1 text-center bg-[#B6B6B6] hover:bg-[#a3a3a3] text-white text-sm font-semibold py-3 rounded-xl transition">
+                                    Cancel
+                                </a>
                                 <button type="submit"
-                                    class="flex-1 bg-[#173863] hover:bg-[#0F2A4D] text-white text-sm font-semibold py-3 rounded-xl">Submit
-                                    Request</button>
+                                    class="flex-1 bg-[#082B6D] hover:bg-[#061f4f] text-white text-sm font-semibold py-3 rounded-xl transition">
+                                    Submit Request
+                                </button>
                             </div>
                         </form>
-                    </div>
-
-                    <!-- SIDE PANEL -->
-                    <div class="space-y-6">
-                        <div
-                            class="bg-white rounded-2xl border border-slate-100 shadow-sm h-64 flex items-center justify-center">
-                            <svg class="w-10 h-10 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 8.25V15a2.25 2.25 0 002.25 2.25h13.5A2.25 2.25 0 0021 15V8.25m-18 0A2.25 2.25 0 015.25 6h13.5A2.25 2.25 0 0121 8.25m-18 0v-.375c0-.621.504-1.125 1.125-1.125h15.75c.621 0 1.125.504 1.125 1.125v.375" />
-                            </svg>
-                        </div>
-
-                        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
-                            <h2 class="text-lg font-bold text-[#173863] text-center mb-4">Terms &amp; Condition</h2>
-                            <div class="divide-y divide-slate-100">
-                                <a href="#"
-                                    class="flex items-center justify-between py-3 text-sm font-medium text-slate-600">
-                                    General Rules
-                                    <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </a>
-                                <a href="#"
-                                    class="flex items-center justify-between py-3 text-sm font-medium text-slate-600">
-                                    Care &amp; Responsibility
-                                    <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </a>
-                                <a href="#"
-                                    class="flex items-center justify-between py-3 text-sm font-medium text-slate-600">
-                                    Penalties &amp; Approval
-                                    <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </a>
-                                <a href="#"
-                                    class="flex items-center justify-between py-3 text-sm font-medium text-slate-600">
-                                    Data &amp; System Usage
-                                    <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </a>
-                                <a href="#"
-                                    class="flex items-center justify-between py-3 text-sm font-medium text-slate-600">
-                                    Special Circumstances
-                                    <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </a>
-                            </div>
-                            <a href="#"
-                                class="flex items-center justify-end gap-1.5 text-sm font-semibold text-[#173863] mt-3">
-                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.451.999-1.451 1.827v.5m0 3h.008v.008h-.008v-.008zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                Need help?
-                            </a>
-                        </div>
                     </div>
                 </div>
             </main>
