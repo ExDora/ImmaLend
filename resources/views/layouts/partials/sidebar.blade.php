@@ -27,7 +27,8 @@
     <nav class="px-4 mt-8 space-y-1.5">
 
         <!-- Home -->
-        <a href="#" class="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#0B3478] text-white">
+        <a href="{{ route('home') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition
+                {{ request()->routeIs('home') ? 'bg-[#0B3478] text-white' : 'text-[#0B3478] hover:bg-white/60' }}">
             <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 3.5 3 10v10h6v-6h6v6h6V10l-9-6.5Z" />
             </svg>
@@ -39,7 +40,8 @@
 
 
         <!-- List of Items -->
-        <a href="#" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#0B3478] hover:bg-white/60 transition">
+        <a href="{{ route('items.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition
+        {{ request()->routeIs('items.*') ? 'bg-[#0B3478] text-white' : 'text-[#0B3478] hover:bg-white/60' }}">
             <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M4 6h16M4 12h16M4 18h16M8 6v.01M8 12v.01M8 18v.01" />
@@ -52,7 +54,9 @@
 
 
         <!-- My Borrowings -->
-        <a href="#" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#0B3478] hover:bg-white/60 transition">
+        <a href="{{ route('lendings.index') }}"
+            class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition
+                {{ request()->routeIs('lendings.index') ? 'bg-[#0B3478] text-white' : 'text-[#0B3478] hover:bg-white/60' }}">
             <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M6 3.75h9l4 4v12.5A1.75 1.75 0 0 1 17.25 22h-11A1.75 1.75 0 0 1 4.5 20.25V5.5A1.75 1.75 0 0 1 6 3.75Z" />
@@ -66,7 +70,7 @@
         </a>
 
 
-        <!-- Borrowings History -->
+        <!-- Borrowings History (belum ada route, next feature) -->
         <a href="#" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#0B3478] hover:bg-white/60 transition">
             <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
