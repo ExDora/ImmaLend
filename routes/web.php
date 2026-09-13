@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\AdminLoginController;
-use App\Http\Controllers\Auth\UserLoginController;
-use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LendingController;
@@ -16,15 +16,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-//Login User
-Route::get('/login', [UserLoginController::class, 'create'])->name('login');
-Route::post('/login', [UserLoginController::class, 'store'])->name('login.store');
-
-
-//Login Admin
-Route::get('/admin/login', [AdminLoginController::class, 'create'])->name('admin.login');
-Route::post('/admin/login', [AdminLoginController::class, 'store'])->name('admin.login.store');
+//login user
+Route::get('/login', [UserLoginController::class, 'index'])->name('login');
 
 
 //Manajemen Data Pengguna (Resource)
@@ -37,6 +30,11 @@ Route::resource('admins', AdminController::class);
 
 //HomePage
 Route::get('/', function () {return view('home');})->name('home');
+
+
+//Request Barang
+Route::get('/items/request', [ItemController::class, 'requestItemForm'])->name('items.request');
+
 
 //Manajemen Data Barang (Resource)
 Route::resource('items', ItemController::class);

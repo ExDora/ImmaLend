@@ -1,147 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ImmaLend — User Login</title>
-    <!-- Tailwind utility classes only. Tidak ada <script> / JavaScript di file ini. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>Login - ImmaLend</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
-        }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
+<body 
+    class="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat"
+    style="background-image: url('{{ asset('images/bglogin.png') }}');"
+>
 
-<body class="min-h-screen bg-slate-100 flex items-center justify-center p-6">
-
-    <div class="w-full max-w-6xl bg-slate-100 rounded-3xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-center p-4">
-
-        <!-- LEFT ILLUSTRATION PANEL -->
-        <div class="relative bg-white rounded-3xl p-10 overflow-hidden">
-            <svg class="absolute top-8 left-8 w-5 h-5 text-blue-200" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2l2 2-2 2-2-2z m0 16l2 2-2 2-2-2z M2 12l2-2 2 2-2 2z m16 0l2-2 2 2-2 2z" />
-            </svg>
-            <svg class="absolute top-10 right-14 w-16 h-2 text-blue-300 rotate-12" fill="none" viewBox="0 0 64 8"
-                stroke="currentColor" stroke-width="4">
-                <path stroke-linecap="round" d="M2 6L62 2" />
-            </svg>
-            <div class="absolute bottom-24 right-10 w-4 h-4 rounded-full bg-blue-200"></div>
-
-            <h1 class="text-4xl font-extrabold text-[#173863] leading-snug relative">Borrow what you need,<br>when you
-                need it.</h1>
-            <p class="text-sm text-slate-400 mt-4 max-w-sm relative">ImmaLend makes it easy to find, request, and manage
-                the items you need for school activities.</p>
-
-            <div class="mt-10 flex items-end gap-4 relative">
-                <svg class="w-28 h-20 text-slate-700" viewBox="0 0 48 32" fill="none" stroke="currentColor"
-                    stroke-width="1.5">
-                    <rect x="2" y="4" width="30" height="20" rx="2" />
-                    <path d="M0 26h34" />
-                </svg>
-                <svg class="w-16 h-12 text-slate-500" viewBox="0 0 48 32" fill="none" stroke="currentColor"
-                    stroke-width="1.5">
-                    <rect x="4" y="8" width="30" height="16" rx="3" />
-                    <circle cx="38" cy="16" r="6" />
-                </svg>
-                <svg class="w-16 h-12 text-slate-400" viewBox="0 0 48 32" fill="none" stroke="currentColor"
-                    stroke-width="1.5">
-                    <circle cx="8" cy="8" r="4" />
-                    <circle cx="40" cy="8" r="4" />
-                    <circle cx="8" cy="24" r="4" />
-                    <circle cx="40" cy="24" r="4" />
-                    <rect x="18" y="12" width="12" height="8" rx="2" />
-                </svg>
-            </div>
-
-            <svg class="absolute bottom-6 left-10 w-6 h-2 text-blue-300" fill="none" viewBox="0 0 24 8"
-                stroke="currentColor" stroke-width="4">
-                <path stroke-linecap="round" d="M2 4h20" />
-            </svg>
+    <!-- Container Utama Card Login -->
+    <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl w-full max-w-5xl flex overflow-hidden min-h-[600px] p-4 gap-4">
+        
+        <!-- SISI KIRI: Banner Informasi / Ilustrasi Gambar -->
+        <div class="hidden md:flex w-1/2 rounded-2xl overflow-hidden relative">
+            <img 
+                src="{{ asset('images/loginuser.png') }}" 
+                alt="ImmaLend Banner" 
+                class="w-full h-full object-cover object-center"
+            >
         </div>
 
-        <!-- RIGHT LOGIN PANEL -->
-        <div class="relative px-4 lg:px-10 py-10">
+        <!-- SISI KANAN: Form Login -->
+        <div class="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-12 py-6 relative">
+            
+            <!-- Logo Brand & Nama (Sesuai Referensi Gambar) -->
+            <div class="flex items-center justify-center gap-2 mb-6">
+                <img 
+                    src="{{ asset('images/logo.png') }}" 
+                    alt="ImmaLend Logo" 
+                    class="h-7 w-auto object-contain"
+                >
+                <span class="text-xl font-bold text-[#0d2b6b] tracking-tight">ImmaLend</span>
+            </div>
 
-            <p
-                class="absolute inset-0 flex items-center justify-center text-6xl font-extrabold text-slate-200/60 select-none pointer-events-none leading-none text-center">
-                KRISTEN<br>IMMANUEL
-            </p>
+            <!-- Header Form -->
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-1">Welcome Back!</h2>
+                <p class="text-xs text-gray-400">Enter Your Details below</p>
+            </div>
 
-            <div class="relative">
-                <div class="flex items-center justify-center gap-2 mb-6">
-                    <svg class="w-6 h-6 text-[#173863]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-                    </svg>
-                    <span class="text-lg font-extrabold text-[#173863]">ImmaLend</span>
+            <!-- Notifikasi Error dari Controller (Jika login gagal) -->
+            @if ($errors->any())
+                <div class="mb-4 p-3 bg-red-100 text-red-700 text-xs rounded-lg border border-red-200">
+                    {{ $errors->first() }}
+                </div>
+            @endif
+
+            <!-- Form Autentikasi -->
+            <form action="{{ route('login') }}" method="POST" class="space-y-5">
+                @csrf
+
+                <!-- Input Email -->
+                <div class="relative border-b border-gray-300 focus-within:border-blue-600 pb-1">
+                    <label for="email" class="block text-xs text-gray-600 mb-1">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        value="{{ old('email') }}"
+                        required 
+                        class="w-full bg-transparent outline-none text-sm text-gray-800 py-1"
+                    >
                 </div>
 
-                <h1 class="text-4xl font-extrabold text-slate-900 text-center">Welcome Back!</h1>
-                <p class="text-sm text-slate-400 text-center mt-2 mb-8">Enter Your Details below</p>
-
-                <form action="" method="POST" class="space-y-6">
-                    @csrf
-
-                    <div>
-                        <label for="email" class="block text-sm text-slate-500 mb-1">Email</label>
-                        <input type="email" id="email" name="email"
-                            class="w-full border-0 border-b border-slate-300 focus:border-[#173863] outline-none py-2 text-sm text-slate-700 bg-transparent">
+                <!-- Input Password -->
+                <div class="relative border-b border-gray-300 focus-within:border-blue-600 pb-1">
+                    <label for="password" class="block text-xs text-gray-600 mb-1">Password</label>
+                    <div class="flex items-center">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            required 
+                            class="w-full bg-transparent outline-none text-sm text-gray-800 py-1"
+                        >
+                        <button type="button" id="togglePassword" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                            <i class="fa-regular fa-eye text-sm" id="eyeIcon"></i>
+                        </button>
                     </div>
+                </div>
 
-                    <div>
-                        <label for="password" class="block text-sm text-slate-500 mb-1">Password</label>
-                        <div class="flex items-center border-b border-slate-300 focus-within:border-[#173863]">
-                            <input type="password" id="password" name="password"
-                                class="w-full border-0 outline-none py-2 text-sm text-slate-700 bg-transparent">
-                            <svg class="w-5 h-5 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor" stroke-width="1.8">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                        </div>
-                    </div>
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between text-xs text-gray-500 pt-1">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" name="remember" class="rounded border-gray-300 text-blue-600 focus:ring-0">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="hover:underline text-gray-500">Forgot password?</a>
+                </div>
 
-                    <div class="flex items-center justify-between text-sm">
-                        <label class="flex items-center gap-2 text-slate-500">
-                            <input type="checkbox" name="remember"
-                                class="w-4 h-4 rounded border-slate-300 text-teal-700">
-                            Remember me
-                        </label>
-                        <a href="" class="text-slate-500 hover:text-teal-700">Forgot password?</a>
-                    </div>
+                <!-- Tombol Log In -->
+                <button 
+                    type="submit" 
+                    class="w-full bg-[#0d2b6b] hover:bg-[#0a2152] text-white font-medium py-3 rounded-full text-sm transition duration-200 shadow-md mt-2"
+                >
+                    Log In
+                </button>
 
-                    <button type="submit"
-                        class="w-full bg-teal-800 hover:bg-teal-900 text-white text-sm font-semibold py-3.5 rounded-xl">Log
-                        In</button>
+                <!-- Tombol Login dengan Google -->
+                <a 
+                    href="#" 
+                    class="w-full border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium py-2.5 rounded-full text-sm flex items-center justify-center gap-2 transition duration-200 mt-3"
+                >
+                    <svg class="w-4 h-4" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    </svg>
+                    Log in with Google
+                </a>
+            </form>
 
-                    <button type="button"
-                        class="w-full flex items-center justify-center gap-3 border border-slate-200 text-slate-700 text-sm font-semibold py-3.5 rounded-xl bg-white">
-                        <svg class="w-5 h-5" viewBox="0 0 48 48">
-                            <path fill="#FFC107"
-                                d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z" />
-                            <path fill="#FF3D00"
-                                d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z" />
-                            <path fill="#4CAF50"
-                                d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z" />
-                            <path fill="#1976D2"
-                                d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z" />
-                        </svg>
-                        Log in with Google
-                    </button>
-                </form>
-            </div>
         </div>
-
     </div>
 
-</body>
+    <!-- Script Toggle Password View -->
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = document.getElementById('eyeIcon');
 
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            // Toggle ikon mata (terbuka/tertutup)
+            eyeIcon.classList.toggle('fa-eye');
+            eyeIcon.classList.toggle('fa-eye-slash');
+        });
+    </script>
+</body>
 </html>
