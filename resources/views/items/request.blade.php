@@ -88,10 +88,10 @@
 
                         <!-- Tombol Action (Cancel & Submit) -->
                         <div class="grid grid-cols-2 gap-4 pt-4">
-                            <button type="button"
-                                class="w-full bg-[#b8b8b8] hover:bg-[#a3a3a3] text-gray-800 font-bold py-3 rounded-xl text-xs transition duration-200">
+                            <a href="{{ route('items.index') }}"
+                                class="w-full flex items-center justify-center bg-[#b8b8b8] hover:bg-[#a3a3a3] text-gray-800 font-bold py-3 rounded-xl text-xs transition duration-200">
                                 Cancel
-                            </button>
+                            </a>
                             <button type="submit"
                                 class="w-full bg-[#0B3478] hover:bg-[#072352] text-white font-bold py-3 rounded-xl text-xs transition duration-200 shadow-md">
                                 Submit Request
