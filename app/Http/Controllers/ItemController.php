@@ -67,6 +67,18 @@ class ItemController extends Controller
     }
 
     /**
+     * Display the request item form.
+     */
+    public function requestItemForm()
+    {
+        $title = "ImmaLend - Request Item";
+
+        return view('items.request', [
+            'title' => $title
+        ]);
+    }
+    
+    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
@@ -80,18 +92,6 @@ class ItemController extends Controller
     public function destroy(string $id)
     {
         return "Menghapus data barang dengan ID: {$id}";
-    }
-
-    /**
-     * Display the request item form.
-     */
-    public function request()
-    {
-        $title = "ImmaLend - Request Item";
-
-        return view('request', [
-            'title' => $title
-        ]);
     }
 
 }
