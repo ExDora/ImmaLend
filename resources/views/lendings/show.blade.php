@@ -6,7 +6,6 @@
 
     <main class="p-8 min-h-[calc(100vh-4rem)] flex items-center justify-center">
 
-        {{-- TODO: ganti data statis di bawah ini dengan data dari $lending (model/controller) saat backend siap --}}
         @php
             $lending = $lending ?? (object) [
                 'name' => 'Forsaquhe',
@@ -72,6 +71,6 @@
 
         </div>
 
-    </main> 
+    </main>
 
 @endsection

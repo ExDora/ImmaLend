@@ -29,7 +29,6 @@ Route::post('/login', [UserLoginController::class, 'store'])->name('login.store'
 Route::get('/admin/login', [AdminLoginController::class, 'create'])->name('admin.login');
 Route::post('/admin/login', [AdminLoginController::class, 'store'])->name('admin.login.store');
 
-
 //Manajemen Data Pengguna (Resource)
 Route::resource('users', UserController::class)->names('users');
 
@@ -39,14 +38,16 @@ Route::resource('admins', AdminController::class);
 
 
 //HomePage
-Route::get('/', function () {return view('home');})->name('home');
+Route::get('/', function () {
+    return view('home'); })->name('home');
 
 //Manajemen Data Barang (Resource)
 Route::resource('items', ItemController::class);
-Route::get('/inventory', function () {return view('items.inventory');})->name('inventory');
+Route::get('/inventory', function () {
+    return view('items.inventory'); })->name('inventory');
 
-    //Request Barang
-    Route::get('/request', [ItemController::class, 'request'])->name('request.item');
+//Request Barang
+Route::get('/request', [ItemController::class, 'request'])->name('request.item');
 
 
 //Manajemen Data Peminjaman (Resource)
