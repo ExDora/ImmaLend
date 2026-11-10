@@ -37,21 +37,6 @@ class User extends Authenticatable
         ];
     }
 
-    public function profile(): HasOne
-    {
-        return $this->hasOne(UserProfile::class);
-    }
-
-    public function lendings(): HasMany
-    {
-        return $this->hasMany(Lending::class);
-    }
-
-    public function itemRequests(): HasMany
-    {
-        return $this->hasMany(ItemRequest::class);
-    }
-
     public function isAdmin(): bool
     {
         return $this->role === Role::Admin;
