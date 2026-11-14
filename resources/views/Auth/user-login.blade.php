@@ -15,7 +15,7 @@
 </head>
 <body 
     class="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat"
-    style="background-image: url('{{ asset('images/bglogin.png') }}');"
+    style="background-image: url('{{ asset('images/login/bglogin.png') }}');"
 >
 
     <!-- Container Utama Card Login -->
@@ -24,7 +24,7 @@
         <!-- SISI KIRI: Banner Informasi / Ilustrasi Gambar -->
         <div class="hidden md:flex w-1/2 rounded-2xl overflow-hidden relative">
             <img 
-                src="{{ asset('images/loginuser.png') }}" 
+                src="{{ asset('images/login/loginuser.png') }}" 
                 alt="ImmaLend Banner" 
                 class="w-full h-full object-cover object-center"
             >
@@ -36,7 +36,7 @@
             <!-- Logo Brand & Nama (Sesuai Referensi Gambar) -->
             <div class="flex items-center justify-center gap-2 mb-6">
                 <img 
-                    src="{{ asset('images/logo.png') }}" 
+                    src="{{ asset('images/logo/logo.png') }}" 
                     alt="ImmaLend Logo" 
                     class="h-7 w-auto object-contain"
                 >

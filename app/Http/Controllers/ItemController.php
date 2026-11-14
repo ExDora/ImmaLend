@@ -13,7 +13,7 @@ class ItemController extends Controller
     {
         $title = "ImmaLend - Item List";
 
-        return view('items.index', [
+        return view('public.items.index', [
             'title' => $title
         ]);
     }
@@ -25,7 +25,7 @@ class ItemController extends Controller
     {
         $title = "ImmaLend - Create Item";
 
-        return view('items.create', [
+        return view('admin.items.create', [
             'title' => $title
         ]);
     }
@@ -73,7 +73,7 @@ class ItemController extends Controller
     {
         $title = "ImmaLend - Request Item";
 
-        return view('items.request', [
+        return view('public.items.request', [
             'title' => $title
         ]);
     }
