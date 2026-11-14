@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Item;
 
 use Illuminate\Http\Request;
 
@@ -49,8 +50,11 @@ class ItemController extends Controller
     {
         $title = "ImmaLend - Show Item";
 
+        $item = Item::with('category')->findOrFail($id);
+
         return view('items.show', [
-            'title' => $title
+            'title' => $title,
+            'item' => $item,
         ]);
     }
 
