@@ -6,7 +6,7 @@
     <main class="p-8">
 
         <!-- Breadcrumb -->
-        <a href="{{ route('items.index') }}" class="text-sm text-slate-400 hover:text-[#173863]">&larr; Back to Items</a>
+        <a href="{{ route('items.index') }}" class="text-sm text-slate-400 hover:text-[#173863]">&larr; Back </a>
 
         <h1 class="text-2xl font-extrabold text-[#173863] mt-2">Item Detail</h1>
         <p class="text-sm text-slate-400 mt-1">Full information about this inventory item.</p>
@@ -57,11 +57,6 @@
                         <p class="font-semibold text-[#173863] mb-1">Specifications</p>
                         <p class="text-sm text-slate-500 whitespace-pre-line">{{ $item->specifications ?: 'No specifications provided.' }}</p>
                     </div>
-
-                    <a href="{{ route('lendings.create') }}"
-                        class="mt-8 inline-block bg-[#173863] hover:bg-[#0F2A4D] text-white text-sm font-semibold px-6 py-3 rounded-xl">
-                        Request this item
-                    </a>
                 </div>
             </div>
         </div>
