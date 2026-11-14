@@ -92,6 +92,11 @@ Route::middleware('auth')->group(function () {
         'requestItemForm'
     ])->name('items.request');
 
+        Route::post('/items/request', [
+        ItemController::class,
+        'submitRequest'
+    ])->name('items.request.store');
+
     Route::get('/request', [
         ItemController::class,
         'request'
