@@ -79,6 +79,27 @@ class ItemController extends Controller
     }
     
     /**
+     * Validate and receive the request item form.
+     */
+    public function submitRequest(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:100'],
+            'class' => ['required', 'string', 'max:50'],
+            'item_name' => ['required', 'string', 'max:100'],
+            'category' => ['required', 'string', 'max:50'],
+            'reason' => ['required', 'string', 'max:500'],
+            'terms' => ['accepted'],
+        ], [
+            'terms.accepted' => 'You must confirm that you have read the Request Conditions.',
+        ]);
+
+        return redirect()
+            ->route('items.request')
+            ->with('success', 'Your request has been submitted successfully.');
+    }
+
+    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
