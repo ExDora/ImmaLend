@@ -10,11 +10,13 @@ class LogoutController extends Controller
 {
     public function __invoke(Request $request)
     {
+        $wasAdmin = $request->user()?->isAdmin() ?? false;
+
         Auth::logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login');
+        return redirect()->route($wasAdmin ? 'admin.login' : 'login');
     }
 }

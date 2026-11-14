@@ -11,23 +11,24 @@ use Illuminate\Database\Seeder;
 class UserSeeder extends Seeder
 {
     /**
-     * Akun contoh dari halaman Users (admin). Password dev: "password".
+     * Akun contoh dari halaman Users (admin).
+     * Password dev: admin = "admin12345", teacher & student = "password".
      * JANGAN dipakai di production.
      */
     public function run(): void
     {
         $users = [
             // name, email, role, kelas, nis
-            ['Admin Utama',         'admin@ski.sch.id',            Role::Admin,   null,         null],
-            ['Andika Luxius',       'andika.001@ski.sch.id',       Role::Teacher, null,         null],
-            ['Felicia Gracia',      'felicia.001@ski.sch.id',      Role::Teacher, null,         null],
-            ['Andreas Nathaniel',   'andreas.001@ski.sch.id',      Role::Student, 'XII TKJ 3',  '1001'],
-            ['Brianna Rachel',      'brianna.002@ski.sch.id',      Role::Student, 'XII TKJ 3',  '1002'],
-            ['Christopher Rafael',  'christopher.003@ski.sch.id',  Role::Student, 'XII TKJ 2',  '1003'],
-            ['Devina Valencia',     'devina.001@ski.sch.id',       Role::Student, 'XII RPL 1',  '1004'],
-            ['Ezra Zefanya',        'ezra.001@ski.sch.id',         Role::Student, 'XI TKJ 1',   '1005'],
-            ['Gabriel Lie',         'gabriel.001@ski.sch.id',      Role::Student, 'XI RPL 1',   '1006'],
-            ['Hanna Maria',         'hanna.001@ski.sch.id',        Role::Student, 'X TKJ 1',    '1007'],
+            ['Admin Utama', 'admin@ski.sch.id', Role::Admin, null, null],
+            ['Andika Luxius', 'andika.001@ski.sch.id', Role::Teacher, null, null],
+            ['Felicia Gracia', 'felicia.001@ski.sch.id', Role::Teacher, null, null],
+            ['Andreas Nathaniel', 'andreas.001@ski.sch.id', Role::Student, 'XII TKJ 3', '1001'],
+            ['Brianna Rachel', 'brianna.002@ski.sch.id', Role::Student, 'XII TKJ 3', '1002'],
+            ['Christopher Rafael', 'christopher.003@ski.sch.id', Role::Student, 'XII TKJ 2', '1003'],
+            ['Devina Valencia', 'devina.001@ski.sch.id', Role::Student, 'XII RPL 1', '1004'],
+            ['Ezra Zefanya', 'ezra.001@ski.sch.id', Role::Student, 'XI TKJ 1', '1005'],
+            ['Gabriel Lie', 'gabriel.001@ski.sch.id', Role::Student, 'XI RPL 1', '1006'],
+            ['Hanna Maria', 'hanna.001@ski.sch.id', Role::Student, 'X TKJ 1', '1007'],
         ];
 
         foreach ($users as [$name, $email, $role, $className, $nis]) {
@@ -35,7 +36,7 @@ class UserSeeder extends Seeder
                 ['email' => $email],
                 [
                     'name' => $name,
-                    'password' => 'password', // di-hash otomatis oleh cast 'hashed' pada model User
+                    'password' => $role === Role::Admin ? 'admin12345' : 'password',
                     'role' => $role,
                     'status' => UserStatus::Active,
                     'email_verified_at' => now(),
