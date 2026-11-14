@@ -116,14 +116,6 @@
 
             </form>
 
-            <!-- Admin Login Link -->
-            <p class="text-center text-xs text-gray-500 mt-6">
-                Are you an administrator?
-                <a href="{{ route('admin.login') }}" class="font-semibold text-[#173863] hover:underline">
-                    Admin Login
-                </a>
-            </p>
-
         </div>
     </div>
 

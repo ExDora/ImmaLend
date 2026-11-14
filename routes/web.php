@@ -22,29 +22,37 @@ use App\Http\Controllers\LendingAction\ReturnLendingController;
 
 Route::get('/', function () {
     return view('home');
-})->name('home');
+})->middleware('auth')->name('home');
 
 
 // ==================================
 // USER LOGIN
 // ==================================
 
-Route::get('/login', [UserLoginController::class, 'create'])
-    ->name('login');
+Route::middleware('guest')->group(function () {
 
-Route::post('/login', [UserLoginController::class, 'store'])
-    ->name('login.store');
+    Route::get('/login', [UserLoginController::class, 'create'])
+        ->name('login');
+
+    Route::post('/login', [UserLoginController::class, 'store'])
+        ->name('login.store');
+
+});
 
 
 // ==================================
 // ADMIN LOGIN
 // ==================================
 
-Route::get('/admin/login', [AdminLoginController::class, 'create'])
-    ->name('admin.login');
+Route::middleware('guest')->group(function () {
 
-Route::post('/admin/login', [AdminLoginController::class, 'store'])
-    ->name('admin.login.store');
+    Route::get('/admin/login', [AdminLoginController::class, 'create'])
+        ->name('admin.login');
+
+    Route::post('/admin/login', [AdminLoginController::class, 'store'])
+        ->name('admin.login.store');
+
+});
 
 
 // ==================================
@@ -71,36 +79,35 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 
 // ==================================
-// ITEM REQUEST
+// AREA LOGIN (admin, teacher, student)
 // ==================================
+// Catatan: route tulis (create/store/edit/update/destroy) milik admin
+// sebaiknya nanti dipindah ke grup 'role:admin' di bawah.
 
-Route::get('/items/request', [
-    ItemController::class,
-    'requestItemForm'
-])->name('items.request');
+Route::middleware('auth')->group(function () {
 
-Route::get('/request', [
-    ItemController::class,
-    'request'
-])->name('request.item');
+    // ITEM REQUEST
+    Route::get('/items/request', [
+        ItemController::class,
+        'requestItemForm'
+    ])->name('items.request');
 
+    Route::get('/request', [
+        ItemController::class,
+        'request'
+    ])->name('request.item');
 
-// ==================================
-// INVENTORY
-// ==================================
+    // INVENTORY
+    Route::resource('items', ItemController::class);
 
-Route::resource('items', ItemController::class);
+    Route::get('/inventory', function () {
+        return view('items.inventory');
+    })->name('inventory');
 
-Route::get('/inventory', function () {
-    return view('items.inventory');
-})->name('inventory');
+    // LENDING
+    Route::resource('lendings', LendingController::class);
 
-
-// ==================================
-// LENDING
-// ==================================
-
-Route::resource('lendings', LendingController::class);
+});
 
 
 // ==================================
