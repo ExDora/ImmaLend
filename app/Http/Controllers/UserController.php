@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         $title = "ImmaLend - Homepage";
 
-        return view('users.index', [
+        return view('admin.users.index', [
             'title' => $title
         ]);
     }
@@ -25,7 +25,7 @@ class UserController extends Controller
     {
         $title = "ImmaLend - Create User";
 
-        return view('users.create', [
+        return view('admin.users.create', [
             'title' => $title
         ]);
     }
@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         $title = "ImmaLend - Store User";
 
-        return view('users.store', [
+        return view('admin.users.store', [
             'title' => $title
         ]);
     }
@@ -49,7 +49,7 @@ class UserController extends Controller
     {
         $title = "ImmaLend - Show User";
 
-        return view('users.show', [
+        return view('public.users.show', [
             'title' => $title
         ]);
     }
@@ -61,7 +61,19 @@ class UserController extends Controller
     {
         $title = "ImmaLend - Edit User";
 
-        return view('users.edit', [
+        return view('admin.users.edit', [
+            'title' => $title
+        ]);
+    }
+
+    /**
+     * Display the user profile page.
+     */
+    public function profile()
+    {
+        $title = "ImmaLend - User Profile";
+
+        return view('public.users.profile', [
             'title' => $title
         ]);
     }

@@ -71,7 +71,7 @@
 
 
         <!-- Borrowings History (belum ada route, next feature) -->
-        <a href="#" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#0B3478] hover:bg-white/60 transition">
+        <a href="{{ route('lendings.userhistory') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#0B3478] hover:bg-white/60 transition">
             <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
 

@@ -13,14 +13,14 @@ class LendingController extends Controller
     {
         $title = "ImmaLend - Lending List";
 
-        return view('lendings.index', [
+        return view('public.lendings.index', [
             'title' => $title
         ]);
     }
 
     public function adminIndex()
     {
-        return view('lendings.admin-index', [
+        return view('admin.lendings.admin-index', [
             'title' => 'Borrowing Requests'
         ]);
     }
@@ -32,7 +32,7 @@ class LendingController extends Controller
     {
         $title = "ImmaLend - Create Lending";
 
-        return view('lendings.create', [
+        return view('public.lendings.create', [
             'title' => $title
         ]);
     }
@@ -56,7 +56,7 @@ class LendingController extends Controller
     {
         $title = "ImmaLend - Show Lending";
 
-        return view('lendings.show', [
+        return view('public.lendings.show', [
             'title' => $title
         ]);
     }
@@ -80,7 +80,31 @@ class LendingController extends Controller
     {
         $title = "ImmaLend - Return Confirmation";
 
-        return view('lendings.return-confirmation', [
+        return view('admin.lendings.return-confirmation', [
+            'title' => $title
+        ]);
+    }
+
+    /**
+     * Display the lending history page.
+     */
+    public function lendingHistory()
+    {
+        $title = "ImmaLend - Lending History";
+
+        return view('admin.lendings.lending-history', [
+            'title' => $title
+        ]);
+    }
+
+    /**
+     * Display the lending history page for users.
+     */
+    public function userLendingHistory()
+    {
+        $title = "ImmaLend - Lending History";
+
+        return view('public.lendings.lending-history', [
             'title' => $title
         ]);
     }
