@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -58,11 +57,6 @@ Route::middleware('guest')->group(function () {
 
 });
 
-// Alternative Admin Login
-Route::get('/admin-imma1326/login', [AdminLoginController::class, 'index'])
-    ->middleware('guest')
-    ->name('admin.alternative-login');
-
 
 // Logout
 Route::post('/logout', LogoutController::class)
@@ -71,7 +65,7 @@ Route::post('/logout', LogoutController::class)
 
 
 // ==========================================
-// USER MANAGEMENT
+// USER MANAGEMENT (Admin only)
 // ==========================================
 
 Route::middleware(['auth', 'role:admin'])
@@ -93,6 +87,14 @@ Route::middleware(['auth', 'role:admin'])
 Route::middleware('auth')->group(function () {
 
     // ======================================
+    // PROFILE
+    // ======================================
+
+    Route::get('/profile', [UserController::class, 'profile'])
+        ->name('profile');
+
+
+    // ======================================
     // ITEM REQUEST
     // ======================================
 
@@ -104,15 +106,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/request', [ItemController::class, 'request'])
         ->name('request.item');
-
-
-    // ======================================
-    // INVENTORY MANAGEMENT
-    // ======================================
-
-    Route::get('/inventory', function () {
-        return view('items.inventory');
-    })->name('inventory');
 
 
     // ======================================
@@ -138,10 +131,21 @@ Route::middleware('auth')->group(function () {
 
 
 // ==========================================
-// ADMIN LENDING MANAGEMENT
+// ADMIN AREA (Admin only)
 // ==========================================
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
+
+    // ======================================
+    // INVENTORY MANAGEMENT
+    // ======================================
+
+    Route::get('/inventory', function () {
+        return view('admin.items.inventory', [
+            'title' => 'ImmaLend - Inventory',
+        ]);
+    })->name('inventory');
+
 
     // ======================================
     // LENDING DASHBOARD
