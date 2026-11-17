@@ -80,7 +80,10 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Epson EB X05 Projector.jpg') }}" 
+                                                alt="Epson EB X05" class="w-full h-full object-cover">
+                                        </div>
                                         <div>
                                             <p class="font-medium text-slate-700">Epson EB X05...</p>
                                             <p class="text-xs text-slate-400">TEK-006</p>
@@ -110,7 +113,10 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Power Strip.jpg') }}" 
+                                                alt="Power Strip" class="w-full h-full object-cover">
+                                        </div>
                                         <div>
                                             <p class="font-medium text-slate-700">Power Strip</p>
                                             <p class="text-xs text-slate-400">TEK-008</p>
@@ -140,7 +146,10 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Keyboard Logitech K120.jpg') }}" 
+                                                alt="Keyboard Logitech" class="w-full h-full object-cover">
+                                        </div>
                                         <div>
                                             <p class="font-medium text-slate-700">Keyboard Log...</p>
                                             <p class="text-xs text-slate-400">TEK-005</p>
@@ -170,7 +179,10 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Lenovo Ideapad 3.png') }}" 
+                                                alt="Lenovo Ideapad 3" class="w-full h-full object-cover">
+                                        </div>
                                         <div>
                                             <p class="font-medium text-slate-700">Lenovo Ideap...</p>
                                             <p class="text-xs text-slate-400">TEK-002</p>
@@ -200,7 +212,10 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/rooms/Coworking.jpeg') }}" 
+                                                alt="Co-Working" class="w-full h-full object-cover">
+                                        </div>
                                         <div>
                                             <p class="font-medium text-slate-700">Co-Working</p>
                                             <p class="text-xs text-slate-400">RM-002</p>
@@ -230,7 +245,10 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/rooms/Studio.jpeg') }}" 
+                                                alt="Studio" class="w-full h-full object-cover">
+                                        </div>
                                         <div>
                                             <p class="font-medium text-slate-700">Studio</p>
                                             <p class="text-xs text-slate-400">RM-004</p>
@@ -260,7 +278,10 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Amplifier Fender.png') }}" 
+                                                alt="Amplifier Fender" class="w-full h-full object-cover">
+                                        </div>
                                         <div>
                                             <p class="font-medium text-slate-700">Amplifier Fen...</p>
                                             <p class="text-xs text-slate-400">MUS-007</p>
@@ -290,7 +311,10 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Microphone.webp') }}" 
+                                                alt="Microphone" class="w-full h-full object-cover">
+                                        </div>
                                         <div>
                                             <p class="font-medium text-slate-700">Microphone</p>
                                             <p class="text-xs text-slate-400">MUS-003</p>

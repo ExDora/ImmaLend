@@ -80,7 +80,9 @@
                         <td class="px-3 py-3 text-slate-500 align-top">1</td>
                         <td class="px-3 py-3 align-top">
                             <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-lg bg-slate-100 shrink-0"></div>
+                                <div class="w-9 h-9 rounded-lg bg-slate-100 shrink-0">
+                                    <img src="{{ asset('images/items/Sony SLT A65V.jpeg') }}" alt="Sony SLT A65V">
+                                </div>
                                 <div class="min-w-0">
                                     <p class="font-medium text-slate-700 truncate">Sony SLT A65V</p>
                                     <p class="text-xs text-slate-400 truncate">TEK-009</p>
@@ -109,7 +111,9 @@
                         <td class="px-3 py-3 text-slate-500 align-top">2</td>
                         <td class="px-3 py-3 align-top">
                             <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-lg bg-slate-100 shrink-0"></div>
+                                <div class="w-9 h-9 rounded-lg bg-slate-100 shrink-0">
+                                    <img src="{{ asset('images/items/DJI Mini 3 Drone.jpg') }}" alt="DJI Mini 3 Drone">
+                                </div>
                                 <div class="min-w-0">
                                     <p class="font-medium text-slate-700 truncate">DJI Mini 3 Drone</p>
                                     <p class="text-xs text-slate-400 truncate">TEK-007</p>
@@ -138,7 +142,9 @@
                         <td class="px-3 py-3 text-slate-500 align-top">3</td>
                         <td class="px-3 py-3 align-top">
                             <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-lg bg-slate-100 shrink-0"></div>
+                                <div class="w-9 h-9 rounded-lg bg-slate-100 shrink-0">
+                                    <img src="{{ asset('images/items/Acoustic Guitar.jpg') }}" alt="Acoustic Guitar">
+                                </div>
                                 <div class="min-w-0">
                                     <p class="font-medium text-slate-700 truncate">Acoustic Guitar</p>
                                     <p class="text-xs text-slate-400 truncate">MUS-001</p>
@@ -193,7 +199,9 @@
                         <td class="px-3 py-3 text-slate-500 align-top">1</td>
                         <td class="px-3 py-3 align-top">
                             <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-lg bg-slate-100 shrink-0"></div>
+                                <div class="w-9 h-9 rounded-lg bg-slate-100 shrink-0">
+                                    <img src="{{ asset('images/items/HP Chromebook 15.jpg') }}" alt="HP Chromebook 15">
+                                </div>
                                 <div class="min-w-0">
                                     <p class="font-medium text-slate-700 truncate">HP Chromebook 15</p>
                                     <p class="text-xs text-slate-400 truncate">TEK-001</p>
@@ -247,7 +255,9 @@
                         <td class="px-3 py-3 text-slate-500 align-top">1</td>
                         <td class="px-3 py-3 align-top">
                             <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-lg bg-slate-100 shrink-0"></div>
+                                <div class="w-9 h-9 rounded-lg bg-slate-100 shrink-0">
+                                    <img src="{{ asset('images/items/Microphone.webp') }}" alt="Microphone">
+                                </div>
                                 <div class="min-w-0">
                                     <p class="font-medium text-slate-700 truncate">Microphone</p>
                                     <p class="text-xs text-slate-400 truncate">MUS-003</p>

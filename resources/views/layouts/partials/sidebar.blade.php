@@ -6,7 +6,7 @@
 
         <!-- Logo -->
         <div class="w-16 h-20 flex items-center justify-center">
-            <img src="{{ asset('images/immalend-logo.png') }}" alt="ImmaLend Logo" class="w-full h-full object-contain">
+            <img src="{{ asset('images/logo/logo.png') }}" alt="ImmaLend Logo" class="w-full h-full object-contain">
         </div>
 
         <!-- Brand Name -->
