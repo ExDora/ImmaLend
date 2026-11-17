@@ -117,6 +117,9 @@ Route::middleware('auth')->group(function () {
     })->name('inventory');
 
     // LENDING
+    Route::get('/borrowing-history', [LendingController::class, 'userLendingHistory'])
+        ->name('lendings.userhistory');
+
     Route::resource('lendings', LendingController::class);
 
 });
@@ -271,4 +274,3 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         });
 
 });
-

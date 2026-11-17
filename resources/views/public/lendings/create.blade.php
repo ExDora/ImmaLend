@@ -3,6 +3,11 @@
 @section('title', $title)
 
 @section('content')
+    @php
+        $current = $items->firstWhere('id', (int) old('item_id', $selected)) ?? $items->first();
+        $profile = auth()->user()->profile;
+    @endphp
+
     <div class="min-h-screen flex">
 
         <!-- ============ SIDEBAR ============ -->
@@ -18,50 +23,58 @@
                     <!-- ============ LEFT COLUMN: ITEM PREVIEW ============ -->
                     <div class="xl:col-span-1 flex flex-col gap-6 h-full">
 
-                        <!-- ITEM IMAGE + INFO CARD -->
-                        <div class="bg-[#EEF2F6] border border-[#B6B6B6] rounded-2xl p-5 shrink-0">
-                            <div class="bg-white rounded-xl h-44 flex items-center justify-center overflow-hidden">
-                                <svg class="w-20 h-16 text-slate-300" viewBox="0 0 48 32" fill="none" stroke="currentColor"
-                                    stroke-width="1.5">
-                                    <rect x="6" y="4" width="36" height="20" rx="2" />
-                                    <path d="M18 28h12M24 24v4" stroke-linecap="round" />
-                                </svg>
-                            </div>
+                        @if ($current)
+                            <!-- ITEM IMAGE + INFO CARD -->
+                            <div class="bg-[#EEF2F6] border border-[#B6B6B6] rounded-2xl p-5 shrink-0">
+                                <div class="bg-white rounded-xl h-44 flex items-center justify-center overflow-hidden">
+                                    <svg class="w-20 h-16 text-slate-300" viewBox="0 0 48 32" fill="none"
+                                        stroke="currentColor" stroke-width="1.5">
+                                        <rect x="6" y="4" width="36" height="20" rx="2" />
+                                        <path d="M18 28h12M24 24v4" stroke-linecap="round" />
+                                    </svg>
+                                </div>
 
-                            <span
-                                class="inline-block mt-4 text-[11px] font-semibold bg-blue-100 text-[#082B6D] px-2.5 py-1 rounded-full">
-                                Technology
-                            </span>
-
-                            <p class="text-sm font-bold text-[#082B6D] mt-2">Monitor LG 24 Inch</p>
-
-                            <div class="flex items-center justify-between mt-2">
-                                <span class="flex items-center gap-1.5 text-xs text-green-600 font-medium">
-                                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                                    Available
+                                <span
+                                    class="inline-block mt-4 text-[11px] font-semibold bg-blue-100 text-[#082B6D] px-2.5 py-1 rounded-full">
+                                    {{ $current->category->name ?? '-' }}
                                 </span>
-                                <span class="text-xs text-slate-500">6 units</span>
-                            </div>
-                        </div>
 
-                        <!-- ITEM DETAILS CARD -->
-                        <div class="bg-[#EEF2F6] border border-[#B6B6B6] rounded-2xl p-6 flex-1">
-                            <h2 class="text-lg font-bold text-[#082B6D] text-center mb-4">Item Details</h2>
+                                <p class="text-sm font-bold text-[#082B6D] mt-2">{{ $current->name }}</p>
 
-                            <div class="text-sm text-slate-700 leading-relaxed space-y-0.5">
-                                <p><span class="font-semibold text-[#082B6D]">Item Name:</span> LG 24-Inch Monitor</p>
-                                <p><span class="font-semibold text-[#082B6D]">Item Code:</span> TEK-006</p>
-                                <p><span class="font-semibold text-[#082B6D]">Category:</span> Monitor</p>
-                                <p><span class="font-semibold text-[#082B6D]">Location:</span> Computer Lab 2</p>
-                                <p><span class="font-semibold text-[#082B6D]">Condition:</span> Good</p>
+                                <div class="flex items-center justify-between mt-2">
+                                    <span class="flex items-center gap-1.5 text-xs text-green-600 font-medium">
+                                        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                                        Available
+                                    </span>
+                                    <span class="text-xs text-slate-500">{{ $current->available }} units</span>
+                                </div>
                             </div>
 
-                            <div class="mt-4 text-sm text-slate-700 leading-relaxed">
-                                <p class="font-semibold text-[#082B6D] mb-1">Specifications:</p>
-                                <p>LG 24-inch monitor, Full HD 1920 x 1080 resolution, IPS panel, up to 75 Hz refresh
-                                    rate, HDMI and VGA connectivity, and widescreen display.</p>
+                            <!-- ITEM DETAILS CARD -->
+                            <div class="bg-[#EEF2F6] border border-[#B6B6B6] rounded-2xl p-6 flex-1">
+                                <h2 class="text-lg font-bold text-[#082B6D] text-center mb-4">Item Details</h2>
+
+                                <div class="text-sm text-slate-700 leading-relaxed space-y-0.5">
+                                    <p><span class="font-semibold text-[#082B6D]">Item Name:</span> {{ $current->name }}</p>
+                                    <p><span class="font-semibold text-[#082B6D]">Item Code:</span> {{ $current->code }}</p>
+                                    <p><span class="font-semibold text-[#082B6D]">Category:</span>
+                                        {{ $current->category->name ?? '-' }}</p>
+                                    <p><span class="font-semibold text-[#082B6D]">Location:</span>
+                                        {{ $current->location ?? '-' }}</p>
+                                    <p><span class="font-semibold text-[#082B6D]">Condition:</span>
+                                        {{ ucfirst($current->condition) }}</p>
+                                </div>
+
+                                <div class="mt-4 text-sm text-slate-700 leading-relaxed">
+                                    <p class="font-semibold text-[#082B6D] mb-1">Specifications:</p>
+                                    <p>{{ $current->specifications ?: 'No specifications provided.' }}</p>
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="bg-[#EEF2F6] border border-[#B6B6B6] rounded-2xl p-6 text-sm text-slate-700">
+                                No items are available for borrowing right now.
+                            </div>
+                        @endif
                     </div>
 
                     <!-- ============ RIGHT COLUMN: FORM ============ -->
@@ -75,6 +88,12 @@
                         <form action="{{ route('lendings.store') }}" method="POST" class="space-y-5">
                             @csrf
 
+                            @if ($errors->any())
+                                <div class="bg-red-100 text-red-700 text-sm rounded-xl px-4 py-3">
+                                    {{ $errors->first() }}
+                                </div>
+                            @endif
+
                             <div>
                                 <label for="name" class="flex items-center gap-2 text-sm font-semibold text-[#082B6D] mb-2">
                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -84,7 +103,7 @@
                                     </svg>
                                     Name
                                 </label>
-                                <input type="text" id="name" name="name" placeholder="Type your fullname here"
+                                <input type="text" id="name" value="{{ auth()->user()->name }}" readonly
                                     class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-700 placeholder-slate-400 outline-none focus:border-[#082B6D]">
                             </div>
 
@@ -98,10 +117,8 @@
                                     </svg>
                                     Class
                                 </label>
-                                <select id="class" name="class_id"
-                                    class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-400 outline-none focus:border-[#082B6D]">
-                                    <option value="" selected disabled>Choose your class here</option>
-                                </select>
+                                <input type="text" id="class" value="{{ $profile?->schoolClass?->name ?? '-' }}" readonly
+                                    class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:border-[#082B6D]">
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -117,7 +134,11 @@
                                     </label>
                                     <select id="item" name="item_id"
                                         class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:border-[#082B6D]">
-                                        <option value="1" selected>Monitor LG 24 Inch</option>
+                                        @foreach ($items as $item)
+                                            <option value="{{ $item->id }}" @selected($current && $current->id === $item->id)>
+                                                {{ $item->name }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div>
@@ -131,7 +152,8 @@
                                         Amount
                                     </label>
                                     <div class="flex items-center bg-white border border-[#B6B6B6] rounded-xl px-4 py-1">
-                                        <input type="number" id="amount" name="amount" min="1" value="1"
+                                        <input type="number" id="amount" name="amount" min="1"
+                                            value="{{ old('amount', 1) }}"
                                             placeholder="Choose the amount of item here"
                                             class="flex-1 py-2 text-sm text-slate-700 placeholder-slate-400 outline-none min-w-0 bg-transparent">
                                         <div class="flex items-center gap-2 shrink-0">
@@ -166,7 +188,7 @@
                                         Borrowing Date
                                     </label>
                                     <input type="date" id="borrow_date" name="borrow_date"
-                                        placeholder="Choose the date here"
+                                        value="{{ old('borrow_date') }}" placeholder="Choose the date here"
                                         class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-500 outline-none focus:border-[#082B6D]">
                                 </div>
                                 <div>
@@ -180,7 +202,7 @@
                                         Returning Date
                                     </label>
                                     <input type="date" id="return_date" name="return_date"
-                                        placeholder="Choose the date here"
+                                        value="{{ old('return_date') }}" placeholder="Choose the date here"
                                         class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-500 outline-none focus:border-[#082B6D]">
                                 </div>
                             </div>
@@ -196,7 +218,7 @@
                                     Reason for borrowing
                                 </label>
                                 <textarea id="reason" name="reason" rows="4" placeholder="Explain your reasonings here"
-                                    class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-700 placeholder-slate-400 outline-none resize-none focus:border-[#082B6D]"></textarea>
+                                    class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-700 placeholder-slate-400 outline-none resize-none focus:border-[#082B6D]">{{ old('reason') }}</textarea>
                             </div>
 
                             <div class="flex items-center gap-4 pt-2">

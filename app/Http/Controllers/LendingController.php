@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Item;
+use App\Models\Lending;
 
 class LendingController extends Controller
 {
@@ -28,12 +30,12 @@ class LendingController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        $title = "ImmaLend - Create Lending";
-
         return view('public.lendings.create', [
-            'title' => $title
+            'title' => 'ImmaLend - Create Lending',
+            'items' => Item::where('available', '>', 0)->orderBy('name')->get(),
+            'selected' => $request->query('item'),
         ]);
     }
 
@@ -42,11 +44,34 @@ class LendingController extends Controller
      */
     public function store(Request $request)
     {
-        $title = "ImmaLend - Store Lending";
-
-        return view('lendings.store', [
-            'title' => $title
+        $data = $request->validate([
+            'item_id' => ['required', 'exists:items,id'],
+            'amount' => ['required', 'integer', 'min:1'],
+            'borrow_date' => ['required', 'date', 'after_or_equal:today'],
+            'return_date' => ['required', 'date', 'after_or_equal:borrow_date'],
+            'reason' => ['required', 'string', 'max:1000'],
         ]);
+
+        $item = Item::findOrFail($data['item_id']);
+
+        if ($data['amount'] > $item->available) {
+            return back()
+                ->withErrors(['amount' => "Stok tersedia hanya {$item->available}."])
+                ->withInput();
+        }
+
+        Lending::create([
+            'user_id' => $request->user()->id,
+            'item_id' => $item->id,
+            'amount' => $data['amount'],
+            'borrow_at' => $data['borrow_date'],
+            'return_at' => $data['return_date'],
+            'reason' => $data['reason'],
+            'status' => 'pending',
+        ]);
+
+        return redirect()->route('lendings.index')
+            ->with('success', 'Your request has been submitted successfully.');
     }
 
     /**
