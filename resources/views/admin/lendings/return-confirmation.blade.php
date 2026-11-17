@@ -78,7 +78,10 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Monitor LG 24 Inch.jpg') }}" 
+                                                alt="Monitor LG" class="w-full h-full object-cover rounded-lg">
+                                        </div>
                                         <div>
                                             <p class="font-medium text-slate-700">Monitor LG...</p>
                                             <p class="text-xs text-slate-400">TEK-004</p>
@@ -103,7 +106,10 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/HP Chromebook 15.jpg') }}" 
+                                                alt="HP Chromebook 15" class="w-full h-full object-cover rounded-lg">
+                                        </div>
                                         <div>
                                             <p class="font-medium text-slate-700">HP Chromeb...</p>
                                             <p class="text-xs text-slate-400">TEK-001</p>
@@ -128,7 +134,10 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Electric Guitar.jpg') }}" 
+                                                alt="Electric Guitar" class="w-full h-full object-cover rounded-lg">
+                                        </div>
                                         <div>
                                             <p class="font-medium text-slate-700">Electric Guitar</p>
                                             <p class="text-xs text-slate-400">MUS-002</p>
@@ -153,7 +162,10 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Audio Mixer Yamaha.png') }}" 
+                                                alt="Audio Mixer" class="w-full h-full object-cover rounded-lg">
+                                        </div>
                                         <div>
                                             <p class="font-medium text-slate-700">Audio Mixer Y...</p>
                                             <p class="text-xs text-slate-400">MUS-004</p>
@@ -178,7 +190,10 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/rooms/Coworking.jpeg') }}" 
+                                                alt="Co-Working" class="w-full h-full object-cover rounded-lg">
+                                        </div>
                                         <div>
                                             <p class="font-medium text-slate-700">Co-Working</p>
                                             <p class="text-xs text-slate-400">RM-002</p>

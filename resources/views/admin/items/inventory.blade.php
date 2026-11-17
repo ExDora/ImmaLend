@@ -72,8 +72,11 @@
                                 <td class="px-6 py-4 text-slate-500">1</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div><span
-                                            class="font-medium text-slate-700">HP Chromebo...</span>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/HP Chromebook 15.jpg') }}"
+                                                alt="HP Chromebook 15" class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="font-medium text-slate-700">HP Chromebo...</span>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-slate-500">Technology</td>
@@ -106,8 +109,11 @@
                                 <td class="px-6 py-4 text-slate-500">2</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div><span
-                                            class="font-medium text-slate-700">Lenovo Ideap...</span>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Lenovo Ideapad 3.png') }}"
+                                                alt="Lenovo Ideapad 3" class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="font-medium text-slate-700">Lenovo Ideap...</span>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-slate-500">Technology</td>
@@ -140,8 +146,11 @@
                                 <td class="px-6 py-4 text-slate-500">3</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div><span
-                                            class="font-medium text-slate-700">Router TP-Lin...</span>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Router TP-Link Archer C6.jpeg') }}" 
+                                                alt="Router TP-Link" class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="font-medium text-slate-700">Router TP-Lin...</span>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-slate-500">Technology</td>
@@ -174,8 +183,11 @@
                                 <td class="px-6 py-4 text-slate-500">4</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div><span
-                                            class="font-medium text-slate-700">Monitor LG 24...</span>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Monitor LG 24 Inch.jpg') }}" 
+                                                alt="Monitor LG 24" class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="font-medium text-slate-700">Monitor LG 24...</span>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-slate-500">Technology</td>
@@ -208,8 +220,11 @@
                                 <td class="px-6 py-4 text-slate-500">5</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div><span
-                                            class="font-medium text-slate-700">Keyboard Log...</span>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Keyboard Logitech K120.jpg') }}" 
+                                                alt="Keyboard Logitech" class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="font-medium text-slate-700">Keyboard Log...</span>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-slate-500">Technology</td>
@@ -242,8 +257,11 @@
                                 <td class="px-6 py-4 text-slate-500">6</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div><span
-                                            class="font-medium text-slate-700">Epson EB X05...</span>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Epson EB X05 Projector.jpg') }}" 
+                                                alt="Epson EB X05" class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="font-medium text-slate-700">Epson EB X05...</span>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-slate-500">Technology</td>
@@ -276,8 +294,11 @@
                                 <td class="px-6 py-4 text-slate-500">7</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div><span
-                                            class="font-medium text-slate-700">DJI Mini 3 Dro...</span>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/DJI Mini 3 Drone.jpg') }}" 
+                                                alt="DJI Mini 3 Drone" class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="font-medium text-slate-700">DJI Mini 3 Dro...</span>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-slate-500">Technology</td>
@@ -310,8 +331,11 @@
                                 <td class="px-6 py-4 text-slate-500">8</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div><span
-                                            class="font-medium text-slate-700">Power Strip</span>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Power Strip.jpg') }}" 
+                                                alt="Power Strip" class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="font-medium text-slate-700">Power Strip</span>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-slate-500">Technology</td>
@@ -344,8 +368,11 @@
                                 <td class="px-6 py-4 text-slate-500">9</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div><span
-                                            class="font-medium text-slate-700">Sony SLT A65V</span>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Sony SLT A65V.jpeg') }}" 
+                                                alt="Sony SLT A65V" class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="font-medium text-slate-700">Sony SLT A65V</span>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-slate-500">Technology</td>
@@ -378,8 +405,11 @@
                                 <td class="px-6 py-4 text-slate-500">10</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div><span
-                                            class="font-medium text-slate-700">Nikon coolpix...</span>
+                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
+                                            <img src="{{ asset('images/items/Nikon coolpix p1100.png') }}" 
+                                                alt="Nikon coolpix" class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="font-medium text-slate-700">Nikon coolpix...</span>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-slate-500">Technology</td>

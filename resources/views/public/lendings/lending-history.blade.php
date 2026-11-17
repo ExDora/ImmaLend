@@ -66,8 +66,7 @@
                                 <td class="px-6 py-4 text-blue-950">1</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <span
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">⌨️</span>
+                                        <img src="{{ asset('images/items/Keyboard Logitech K120.jpg') }}" alt="Keyboard Logitech" class="w-10 h-10 rounded-lg">
                                         <div>
                                             <p class="text-blue-950">Keyboard L...</p>
                                             <p class="text-sm text-blue-950/60">TEK-005</p>
@@ -91,8 +90,7 @@
                                 <td class="px-6 py-4 text-blue-950">2</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <span
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">🖥️</span>
+                                        <img src="{{ asset('images/items/Monitor LG 24 Inch.jpg') }}" alt="Monitor LG" class="w-10 h-10 rounded-lg">
                                         <div>
                                             <p class="text-blue-950">Monitor LG...</p>
                                             <p class="text-sm text-blue-950/60">TEK-004</p>
@@ -116,8 +114,7 @@
                                 <td class="px-6 py-4 text-blue-950">3</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <span
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">📽️</span>
+                                        <img src="{{ asset('images/items/Epson EB X05 Projector.jpg') }}" alt="Epson EB X55" class="w-10 h-10 rounded-lg">
                                         <div>
                                             <p class="text-blue-950">Epson EB X...</p>
                                             <p class="text-sm text-blue-950/60">TEK-006</p>
@@ -141,8 +138,7 @@
                                 <td class="px-6 py-4 text-blue-950">4</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <span
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">📷</span>
+                                        <img src="{{ asset('images/items/Nikon coolpix P1100.png') }}" alt="Nikon Coolpix P1100" class="w-10 h-10 rounded-lg">
                                         <div>
                                             <p class="text-blue-950">Nikon coolp...</p>
                                             <p class="text-sm text-blue-950/60">TEK-010</p>
@@ -166,8 +162,7 @@
                                 <td class="px-6 py-4 text-blue-950">5</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <span
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">🎸</span>
+                                        <img src="{{ asset('images/items/Acoustic Guitar.jpg') }}" alt="Acoustic Guitar" class="w-10 h-10 rounded-lg">
                                         <div>
                                             <p class="text-blue-950">Acoustic G...</p>
                                             <p class="text-sm text-blue-950/60">MUS-001</p>
@@ -191,8 +186,7 @@
                                 <td class="px-6 py-4 text-blue-950">6</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <span
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">🏛️</span>
+                                        <img src="{{ asset('images/rooms/Aula Tiranus 6.jpeg') }}" alt="Aula Tiranus" class="w-10 h-10 rounded-lg">
                                         <div>
                                             <p class="text-blue-950">Aula Tiranu...</p>
                                             <p class="text-sm text-blue-950/60">RM-003</p>
@@ -216,8 +210,7 @@
                                 <td class="px-6 py-4 text-blue-950">7</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <span
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">🥁</span>
+                                        <img src="{{ asset('images/items/Cajon Meinl Headliner.png') }}" alt="Cajon Meinl Headliner" class="w-10 h-10 rounded-lg">
                                         <div>
                                             <p class="text-blue-950">Cajon Meinl...</p>
                                             <p class="text-sm text-blue-950/60">MUS-005</p>

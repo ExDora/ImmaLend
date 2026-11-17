@@ -246,21 +246,27 @@
                         <p class="text-xs text-slate-700 mt-2">Return on time to avoid penalties.</p>
                         <div class="mt-4 space-y-4 flex-1">
                             <div class="flex items-center gap-4 bg-[#EAF0FC] rounded-lg overflow-hidden">
-                                <div class="w-16 h-16 bg-white border border-[#C4CEE4] shrink-0"></div>
+                                <div class="w-16 h-16 bg-white border border-[#C4CEE4] shrink-0">
+                                    <img src="{{ asset('images/items/Sony SLT A65V.jpeg') }}" alt="Sony SLT A65V">
+                                </div>
                                 <div>
                                     <p class="text-sm font-semibold text-slate-900">Sony SLT A65V</p>
                                     <p class="text-xs text-slate-800">Return today - 26 August 26</p>
                                 </div>
                             </div>
                             <div class="flex items-center gap-4 bg-[#EAF0FC] rounded-lg overflow-hidden">
-                                <div class="w-16 h-16 bg-white border border-[#C4CEE4] shrink-0"></div>
+                                <div class="w-16 h-16 bg-white border border-[#C4CEE4] shrink-0">
+                                    <img src="{{ asset('images/items/DJI Mini 3 Drone.jpg') }}" alt="DJI Mini 3 Drone">
+                                </div>
                                 <div>
                                     <p class="text-sm font-semibold text-slate-900">DJI Mini 3 Drone</p>
                                     <p class="text-xs text-slate-800">Return today - 26 August 26</p>
                                 </div>
                             </div>
                             <div class="flex items-center gap-4 bg-[#EAF0FC] rounded-lg overflow-hidden">
-                                <div class="w-16 h-16 bg-white border border-[#C4CEE4] shrink-0"></div>
+                                <div class="w-16 h-16 bg-white border border-[#C4CEE4] shrink-0">
+                                    <img src="{{ asset('images/items/Acoustic Guitar.jpg') }}" alt="Acoustic Guitar">
+                                </div>
                                 <div>
                                     <p class="text-sm font-semibold text-slate-900">Acoustic Guitar</p>
                                     <p class="text-xs text-slate-800">Return on - 29 August 26</p>

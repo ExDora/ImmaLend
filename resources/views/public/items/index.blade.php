@@ -81,12 +81,8 @@
 
                     <!-- Card: Monitor LG 24 Inch -->
                     <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 flex flex-col">
-                        <div class="h-32 rounded-xl bg-slate-50 flex items-center justify-center mb-3">
-                            <svg class="w-16 h-12 text-slate-300" viewBox="0 0 48 32" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <rect x="4" y="4" width="40" height="22" rx="2" />
-                                <path d="M2 28h44" />
-                            </svg>
+                        <div class="h-32 rounded-xl bg-white flex items-center justify-center mb-3">
+                            <img src="{{ asset('images/items/Monitor LG 24 Inch.jpg') }}" alt="Monitor LG 24 Inch" class="h-32 rounded-2xl flex flex-col">
                         </div>
                         <span
                             class="self-start text-[11px] font-semibold bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full">Technology</span>
@@ -102,12 +98,8 @@
 
                     <!-- Card: Epson EB X05 Projector -->
                     <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 flex flex-col">
-                        <div class="h-32 rounded-xl bg-slate-50 flex items-center justify-center mb-3">
-                            <svg class="w-16 h-12 text-slate-300" viewBox="0 0 48 32" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <rect x="4" y="8" width="30" height="16" rx="3" />
-                                <circle cx="38" cy="16" r="6" />
-                            </svg>
+                        <div class="h-32 rounded-xl bg-white flex items-center justify-center mb-3">
+                            <img src="{{ asset('images/items/Epson EB X05 Projector.jpg') }}" alt="Epson EB X05 Projector" class="h-32 rounded-2xl flex flex-col">
                         </div>
                         <span
                             class="self-start text-[11px] font-semibold bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full">Technology</span>
@@ -123,15 +115,8 @@
 
                     <!-- Card: DJI Mini 3 Drone -->
                     <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 flex flex-col">
-                        <div class="h-32 rounded-xl bg-slate-50 flex items-center justify-center mb-3">
-                            <svg class="w-16 h-12 text-slate-300" viewBox="0 0 48 32" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <circle cx="8" cy="8" r="4" />
-                                <circle cx="40" cy="8" r="4" />
-                                <circle cx="8" cy="24" r="4" />
-                                <circle cx="40" cy="24" r="4" />
-                                <rect x="18" y="12" width="12" height="8" rx="2" />
-                            </svg>
+                        <div class="h-32 rounded-xl bg-white flex items-center justify-center mb-3">
+                            <img src="{{ asset('images/items/DJI Mini 3 Drone.jpg') }}" alt="DJI Mini 3 Drone" class="h-32 rounded-2xl flex flex-col">
                         </div>
                         <span
                             class="self-start text-[11px] font-semibold bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full">Technology</span>
@@ -147,11 +132,8 @@
 
                     <!-- Card: Power Strip -->
                     <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 flex flex-col">
-                        <div class="h-32 rounded-xl bg-slate-50 flex items-center justify-center mb-3">
-                            <svg class="w-16 h-12 text-slate-300" viewBox="0 0 48 32" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <rect x="4" y="12" width="40" height="10" rx="5" />
-                            </svg>
+                        <div class="h-32 rounded-xl bg-white flex items-center justify-center mb-3">
+                            <img src="{{ asset('images/items/Power Strip.jpg') }}" alt="Power Strip" class="h-32 rounded-2xl flex flex-col">
                         </div>
                         <span
                             class="self-start text-[11px] font-semibold bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full">Technology</span>
@@ -167,12 +149,8 @@
 
                     <!-- Card: Microphone -->
                     <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 flex flex-col">
-                        <div class="h-32 rounded-xl bg-slate-50 flex items-center justify-center mb-3">
-                            <svg class="w-10 h-12 text-slate-300" viewBox="0 0 24 32" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <rect x="8" y="2" width="8" height="16" rx="4" />
-                                <path d="M4 16a8 8 0 0016 0M12 24v6M8 30h8" />
-                            </svg>
+                        <div class="h-32 rounded-xl bg-white flex items-center justify-center mb-3">
+                            <img src="{{ asset('images/items/Microphone.webp') }}" alt="Microphone" class="h-32 rounded-2xl flex flex-col">
                         </div>
                         <span
                             class="self-start text-[11px] font-semibold bg-purple-100 text-purple-700 px-2.5 py-1 rounded-full">Music</span>
@@ -188,12 +166,8 @@
 
                     <!-- Card: Electric Guitar -->
                     <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 flex flex-col">
-                        <div class="h-32 rounded-xl bg-slate-50 flex items-center justify-center mb-3">
-                            <svg class="w-10 h-14 text-slate-300" viewBox="0 0 24 34" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <rect x="10" y="2" width="4" height="16" />
-                                <ellipse cx="12" cy="26" rx="9" ry="7" />
-                            </svg>
+                        <div class="h-32 rounded-xl bg-white flex items-center justify-center mb-3">
+                            <img src="{{ asset('images/items/Electric Guitar.jpg') }}" alt="Electric Guitar" class="h-32 rounded-2xl flex flex-col">
                         </div>
                         <span
                             class="self-start text-[11px] font-semibold bg-purple-100 text-purple-700 px-2.5 py-1 rounded-full">Music</span>
@@ -209,12 +183,8 @@
 
                     <!-- Card: Acoustic Guitar -->
                     <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 flex flex-col">
-                        <div class="h-32 rounded-xl bg-slate-50 flex items-center justify-center mb-3">
-                            <svg class="w-10 h-14 text-slate-300" viewBox="0 0 24 34" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <rect x="10" y="2" width="4" height="16" />
-                                <ellipse cx="12" cy="26" rx="9" ry="7" />
-                            </svg>
+                        <div class="h-32 rounded-xl bg-white flex items-center justify-center mb-3">
+                            <img src="{{ asset('images/items/Acoustic Guitar.jpg') }}" alt="Acoustic Guitar" class="h-32 rounded-2xl flex flex-col">
                         </div>
                         <span
                             class="self-start text-[11px] font-semibold bg-purple-100 text-purple-700 px-2.5 py-1 rounded-full">Music</span>
@@ -230,11 +200,8 @@
 
                     <!-- Card: VCon Room -->
                     <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 flex flex-col">
-                        <div class="h-32 rounded-xl bg-slate-200 flex items-center justify-center mb-3">
-                            <svg class="w-14 h-12 text-slate-400" viewBox="0 0 48 32" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <rect x="4" y="6" width="40" height="22" rx="2" />
-                            </svg>
+                        <div class="h-32 rounded-xl bg-white flex items-center justify-center mb-3">
+                            <img src="{{ asset('images/rooms/VCon.jpeg') }}" alt="VCon Room" class="h-32 rounded-2xl flex flex-col">
                         </div>
                         <span
                             class="self-start text-[11px] font-semibold bg-orange-100 text-orange-700 px-2.5 py-1 rounded-full">Facility</span>

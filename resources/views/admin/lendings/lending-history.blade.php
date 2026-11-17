@@ -96,8 +96,8 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <span
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">🛸</span>
+                                        <img src="{{ asset('images/items/DJI Mini 3 Drone.jpg') }}" 
+                                            alt="DJI Mini 3 Drone" class="w-9 h-9 object-cover rounded-lg">
                                         <div>
                                             <p class="text-blue-950">DJI Mini 3 Drone</p>
                                             <p class="text-sm text-blue-950/60">TEK-007</p>
@@ -125,8 +125,8 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <span
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">📷</span>
+                                        <img src="{{ asset('images/items/Sony SLT A65V.jpeg') }}" 
+                                            alt="Sony SLT A65V" class="w-9 h-9 object-cover rounded-lg">
                                         <div>
                                             <p class="text-blue-950">Sony SLT A65V</p>
                                             <p class="text-sm text-blue-950/60">TEK-009</p>
@@ -154,8 +154,8 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <span
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">📷</span>
+                                        <img src="{{ asset('images/items/Nikon coolpix p1100.png') }}" 
+                                            alt="Nikon coolpix" class="w-9 h-9 object-cover rounded-lg">
                                         <div>
                                             <p class="text-blue-950">Nikon coolpix...</p>
                                             <p class="text-sm text-blue-950/60">TEK-010</p>
@@ -183,8 +183,8 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <span
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">⌨️</span>
+                                        <img src="{{ asset('images/items/Keyboard Logitech K120.jpg') }}" 
+                                            alt="Keyboard Logitech K120" class="w-9 h-9 object-cover rounded-lg">
                                         <div>
                                             <p class="text-blue-950">Keyboard Log...</p>
                                             <p class="text-sm text-blue-950/60">TEK-005</p>
@@ -212,8 +212,8 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <span
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">🥁</span>
+                                        <img src="{{ asset('images/items/Cajon Meinl Headliner.png') }}" 
+                                            alt="Cajon Meinl Headliner" class="w-9 h-9 object-cover rounded-lg">
                                         <div>
                                             <p class="text-blue-950">Cajon Meinl H...</p>
                                             <p class="text-sm text-blue-950/60">MUS-005</p>
@@ -241,8 +241,8 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <span
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">🏢</span>
+                                        <img src="{{ asset('images/rooms/VCon.jpeg') }}" 
+                                            alt="VCon" class="w-9 h-9 object-cover rounded-lg">
                                         <div>
                                             <p class="text-blue-950">VCon</p>
                                             <p class="text-sm text-blue-950/60">RM-001</p>
@@ -270,8 +270,8 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <span
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">🎭</span>
+                                        <img src="{{ asset('images/rooms/Studio.jpeg') }}" 
+                                            alt="Studio" class="w-9 h-9 object-cover rounded-lg">
                                         <div>
                                             <p class="text-blue-950">Studio</p>
                                             <p class="text-sm text-blue-950/60">RM-004</p>
@@ -299,8 +299,8 @@
                                 </td>
                                 <td class="px-6 py-4 align-top">
                                     <div class="flex items-center gap-3">
-                                        <span
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">🥁</span>
+                                        <img src="{{ asset('images/items/Drum Set Pearl Roadshow.png') }}" 
+                                            alt="Drum Set Pearl Roadshow" class="w-9 h-9 object-cover rounded-lg">
                                         <div>
                                             <p class="text-blue-950">Drum Set Pea...</p>
                                             <p class="text-sm text-blue-950/60">MUS-006/k/</p>
