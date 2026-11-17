@@ -15,16 +15,16 @@
 </head>
 <body 
     class="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat"
-    style="background-image: url('{{ asset('images/login/bglogin.png') }}');"
+    style="background-image: url('{{ asset('images/bglogin.png') }}');"
 >
 
     <!-- Container Utama Card Login -->
     <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl w-full max-w-5xl flex overflow-hidden min-h-[600px] p-4 gap-4">
-        
+
         <!-- SISI KIRI: Banner Informasi / Ilustrasi Gambar -->
         <div class="hidden md:flex w-1/2 rounded-2xl overflow-hidden relative">
             <img 
-                src="{{ asset('images/login/loginuser.png') }}" 
+                src="{{ asset('images/loginuser.png') }}" 
                 alt="ImmaLend Banner" 
                 class="w-full h-full object-cover object-center"
             >
@@ -32,11 +32,11 @@
 
         <!-- SISI KANAN: Form Login -->
         <div class="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-12 py-6 relative">
-            
+
             <!-- Logo Brand & Nama (Sesuai Referensi Gambar) -->
             <div class="flex items-center justify-center gap-2 mb-6">
                 <img 
-                    src="{{ asset('images/logo/logo.png') }}" 
+                    src="{{ asset('images/logo.png') }}" 
                     alt="ImmaLend Logo" 
                     class="h-7 w-auto object-contain"
                 >
@@ -134,7 +134,7 @@
         togglePassword.addEventListener('click', function () {
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
-            
+
             // Toggle ikon mata (terbuka/tertutup)
             eyeIcon.classList.toggle('fa-eye');
             eyeIcon.classList.toggle('fa-eye-slash');

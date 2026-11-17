@@ -7,15 +7,33 @@ use Illuminate\Http\Request;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        web: __DIR__.'/../routes/web.php',
-        commands: __DIR__.'/../routes/console.php',
+        web: __DIR__ . '/../routes/web.php',
+        commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'role' => \App\Http\Middleware\RoleMiddleware::class,
+        ]);
+
+        $middleware->redirectGuestsTo(function (Request $request) {
+            $isAdminPage = in_array(
+                'role:admin',
+                $request->route()?->gatherMiddleware() ?? [],
+                true
+            );
+
+            return route($isAdminPage ? 'admin.login' : 'login');
+        });
+
+        // User yang sudah login lalu membuka /login atau /admin/login
+        // dilempar ke dashboard sesuai role-nya.
+        $middleware->redirectUsersTo(fn(Request $request) => $request->user()?->isAdmin()
+            ? route('lendings.admin-index')
+            : route('home'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
-            fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
+            fn(Request $request) => $request->is('api/*') || $request->expectsJson(),
         );
     })->create();
