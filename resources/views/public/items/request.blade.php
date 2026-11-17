@@ -21,8 +21,24 @@
                     </div>
 
                     <!-- Form Input -->
-                    <form action="#" method="POST" class="space-y-5">
+                    <form action="{{ route('items.request.store') }}" method="POST" class="space-y-5">
                         @csrf
+
+                        @if (session('success'))
+                            <div class="bg-green-50 border border-green-200 text-green-700 text-xs font-semibold rounded-xl px-4 py-3">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div class="bg-red-50 border border-red-200 text-red-600 text-xs font-semibold rounded-xl px-4 py-3">
+                                <ul class="list-disc list-inside space-y-1">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
                         <!-- Field 1: Name -->
                         <div>
