@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\LendingStatus;
 use App\Models\Item;
 use App\Models\Lending;
 use App\Models\User;
@@ -28,7 +29,7 @@ class LendingFactory extends Factory
             'borrow_at' => $borrowAt,
             'return_at' => (clone $borrowAt)->modify('+3 hours'),
             'reason' => fake()->sentence(),
-            'status' => fake()->randomElement(['pending', 'approved', 'rejected', 'borrowed', 'returned']),
+            'status' => fake()->randomElement(LendingStatus::cases()),
         ];
     }
 }
