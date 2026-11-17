@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Item;
-use App\Models\ItemRequest;
 
+use App\Models\ItemRequest;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -49,14 +49,15 @@ class ItemController extends Controller
      */
     public function show(string $id)
     {
-        $title = "ImmaLend - Show Item";
+         $title = "ImmaLend - Show Item";
+
 
         $item = Item::with('category')->findOrFail($id);
 
         return view('items.show', [
-            'title' => $title,
-            'item' => $item,
-        ]);
+        'title' => $title,
+        'item' => $item,
+    ]);
     }
 
     /**
