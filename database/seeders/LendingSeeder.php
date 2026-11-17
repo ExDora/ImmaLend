@@ -18,16 +18,21 @@ class LendingSeeder extends Seeder
         $items = Item::pluck('id', 'code');
         $adminId = $users['admin@ski.sch.id'];
 
+        // Tanggal relatif: $at(1, '15:00') = besok jam 15:00, $at(-1, ...) = kemarin
+        $at = fn(int $days, string $time) => now()->addDays($days)->setTimeFromTimeString($time);
+
         // [email, item code, borrow, return, reason, status]
         $lendings = [
-            ['andreas.001@ski.sch.id', 'TEK-006', '2026-11-17 15:00', '2026-11-17 17:00', 'Presentasi kelas', 'pending'],
-            ['brianna.002@ski.sch.id', 'TEK-008', '2026-11-17 10:00', '2026-11-17 13:00', 'Kegiatan OSIS', 'pending'],
-            ['christopher.003@ski.sch.id', 'TEK-005', '2026-11-16 09:00', '2026-11-16 10:30', 'Mengerjakan tugas', 'pending'],
-            ['ezra.001@ski.sch.id', 'RM-002', '2026-11-16 09:55', '2026-11-16 11:15', 'Rapat kelompok', 'pending'],
-            ['felicia.001@ski.sch.id', 'RM-004', '2026-11-16 10:00', '2026-11-16 12:00', 'Pengambilan video pembelajaran', 'approved'],
-            ['devina.001@ski.sch.id', 'TEK-002', '2026-11-15 07:00', '2026-11-15 09:35', 'Ujian praktik', 'borrowed'],
-            ['andreas.001@ski.sch.id', 'MUS-003', '2026-11-10 07:00', '2026-11-10 13:55', 'Latihan paduan suara', 'returned'],
-            ['brianna.002@ski.sch.id', 'MUS-007', '2026-11-09 07:00', '2026-11-09 13:55', 'Acara sekolah', 'rejected'],
+            ['andreas.001@ski.sch.id', 'TEK-006', $at(1, '15:00'), $at(1, '17:00'), 'Presentasi kelas', 'pending'],
+            ['brianna.002@ski.sch.id', 'TEK-008', $at(1, '10:00'), $at(1, '13:00'), 'Kegiatan OSIS', 'pending'],
+            ['ezra.001@ski.sch.id', 'RM-002', $at(2, '09:55'), $at(2, '11:15'), 'Rapat kelompok', 'pending'],
+            ['felicia.001@ski.sch.id', 'RM-004', $at(1, '10:00'), $at(1, '12:00'), 'Pengambilan video pembelajaran', 'approved'],   // Upcoming
+            ['devina.001@ski.sch.id', 'TEK-002', $at(-1, '07:00'), $at(1, '15:00'), 'Ujian praktik', 'approved'],                    // Borrowed
+            ['ezra.001@ski.sch.id', 'TEK-010', $at(-3, '07:00'), $at(-3, '15:00'), 'Dokumentasi acara', 'approved'],                // Overdue
+            ['christopher.003@ski.sch.id', 'TEK-005', $at(-1, '09:00'), $at(0, '10:30'), 'Mengerjakan tugas', 'return_requested'],
+            ['andreas.001@ski.sch.id', 'MUS-003', $at(-7, '07:00'), $at(-7, '13:55'), 'Latihan paduan suara', 'returned'],
+            ['brianna.002@ski.sch.id', 'MUS-007', $at(-8, '07:00'), $at(-8, '13:55'), 'Acara sekolah', 'rejected'],
+            ['devina.001@ski.sch.id', 'TEK-009', $at(2, '07:00'), $at(2, '13:00'), 'Praktik fotografi', 'cancelled'],
         ];
 
         foreach ($lendings as [$email, $code, $borrowAt, $returnAt, $reason, $status]) {
@@ -37,10 +42,11 @@ class LendingSeeder extends Seeder
                 'amount' => 1,
                 'borrow_at' => $borrowAt,
                 'return_at' => $returnAt,
+                'return_requested_at' => $status === 'return_requested' ? now() : null,
                 'returned_at' => $status === 'returned' ? $returnAt : null,
                 'reason' => $reason,
                 'status' => $status,
-                'processed_by' => $status === 'pending' ? null : $adminId,
+                'processed_by' => in_array($status, ['pending', 'cancelled']) ? null : $adminId,
             ]);
         }
     }
