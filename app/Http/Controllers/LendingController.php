@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\LendingStatus;
+
 use App\Models\Item;
-use App\Models\Lending;
 use Illuminate\Http\Request;
+use App\Models\Lending;
+use App\Enums\LendingStatus;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\ValidationException;
 
@@ -27,12 +28,48 @@ class LendingController extends Controller
         ]);
     }
 
-    public function adminIndex()
-    {
-        return view('admin.lendings.admin-index', [
-            'title' => 'Borrowing Requests'
-        ]);
+   public function adminIndex(Request $request)
+{
+    // Tab: pending (default), approved, rejected
+    $tab = $request->query('status', 'pending');
+
+    if (! in_array($tab, ['pending', 'approved', 'rejected'], true)) {
+        $tab = 'pending';
     }
+
+    $statuses = match ($tab) {
+        'approved' => [
+            LendingStatus::Approved->value,
+            LendingStatus::ReturnRequested->value,
+            LendingStatus::Returned->value,
+        ],
+        'rejected' => [LendingStatus::Rejected->value],
+        default => [LendingStatus::Pending->value],
+    };
+
+    $search = trim((string) $request->query('search', ''));
+
+    $lendings = Lending::with(['user' => fn ($query) => $query->withTrashed(), 'item'])
+        ->whereIn('status', $statuses)
+        ->when($search !== '', function ($query) use ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->whereHas('user', fn ($u) => $u->where('name', 'like', "%{$search}%"))
+                    ->orWhereHas('item', fn ($i) => $i
+                        ->where('name', 'like', "%{$search}%")
+                        ->orWhere('code', 'like', "%{$search}%"));
+            });
+        })
+        ->orderByDesc('id')
+        ->paginate(8)
+        ->withQueryString();
+
+    return view('admin.lendings.admin-index', [
+        'title' => 'Borrowing Requests',
+        'lendings' => $lendings,
+        'tab' => $tab,
+        'pendingCount' => Lending::where('status', LendingStatus::Pending->value)->count(),
+    ]);
+}
 
     /**
      * Form peminjaman. Wajib membawa ?item=ID dari halaman List of Items.
