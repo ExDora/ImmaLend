@@ -18,10 +18,8 @@
 
                     <div
                         class="w-28 h-28 rounded-full bg-gradient-to-br from-sky-300 via-emerald-200 to-sky-400 flex items-center justify-center mb-8 ring-4 ring-white shadow">
-                        <img src="{{ asset('images/user/image.png') }}" alt="Profile Image" class="w-full h-full object-cover rounded-full">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
+                        <img src="{{ asset('images/user/image.png') }}" alt="Profile Image"
+                            class="w-full h-full object-cover rounded-full">
                     </div>
 
                     <h1 class="text-2xl font-bold text-blue-950">Personal Information</h1>
@@ -71,6 +69,22 @@
                             <input type="text" value="Forsaquhe@Immalend.sch.id" readonly
                                 class="w-full rounded-xl border border-gray-300 px-4 py-3 text-blue-950 focus:outline-none focus:ring-2 focus:ring-blue-900/30">
                         </div>
+                    </div>
+
+                    <!-- Logout -->
+                    <div class="flex justify-end mt-10 pt-6 border-t border-gray-200">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit"
+                                class="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-6 py-3 rounded-xl transition">
+                                <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="1.8">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+                                </svg>
+                                Logout
+                            </button>
+                        </form>
                     </div>
 
                 </div>
