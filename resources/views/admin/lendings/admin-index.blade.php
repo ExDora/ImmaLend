@@ -18,6 +18,18 @@
                 <h1 class="text-3xl font-extrabold text-[#173863]">Borrowing Requests</h1>
                 <p class="text-sm text-[#173863]/70 mt-1">Review and manage incoming borrowing requests.</p>
 
+                    @if (session('success'))
+                        <div class="mt-4 rounded-lg bg-green-100 text-green-700 text-sm font-medium px-4 py-3">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="mt-4 rounded-lg bg-red-100 text-red-700 text-sm font-medium px-4 py-3">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
                 <!-- TABS -->
                 <div class="flex items-center gap-10 border-b border-slate-200 mt-6">
                     <a href="" class="pb-3 border-b-2 border-[#173863] text-[#173863] font-semibold text-sm">Pending
