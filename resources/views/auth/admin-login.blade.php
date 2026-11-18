@@ -27,14 +27,14 @@
 </head>
 
 <body class="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat"
-    style="background-image: url('{{ asset('images/bglogin.png') }}');">
+    style="background-image: url('{{ asset('images/login/bglogin.png') }}');">
 
     <!-- Admin Login Card -->
     <div class="bg-white rounded-2xl shadow-xl w-full max-w-[440px] px-8 sm:px-10 py-10">
 
         <!-- Logo -->
         <div class="flex items-center justify-center gap-2 mb-4">
-            <img src="{{ asset('images/logo.png') }}" alt="ImmaLend Logo" class="h-7 w-auto object-contain">
+            <img src="{{ asset('images/logo/logo.png') }}" alt="ImmaLend Logo" class="h-7 w-auto object-contain">
             <span class="text-xl font-bold text-[#173863] tracking-tight">
                 ImmaLend
             </span>
