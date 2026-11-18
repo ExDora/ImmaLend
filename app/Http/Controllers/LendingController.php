@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\LendingStatus;
+
 use App\Models\Item;
-use App\Models\Lending;
 use Illuminate\Http\Request;
+use App\Models\Lending;
+use App\Enums\LendingStatus;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\ValidationException;
 
@@ -42,31 +43,48 @@ class LendingController extends Controller
         ]);
     }
 
-    /**
-     * Query peminjaman user untuk satu tab.
-     * - upcoming: sudah disetujui, tanggal pinjam belum tiba
-     * - pending : menunggu persetujuan admin
-     * - current : sudah disetujui dan tanggal pinjam sudah tiba
-     */
-    private function tabQuery(int $userId, string $tab)
-    {
-        $query = Lending::where('user_id', $userId);
+   public function adminIndex(Request $request)
+{
+    // Tab: pending (default), approved, rejected
+    $tab = $request->query('status', 'pending');
 
-        return match ($tab) {
-            'upcoming' => $query->where('status', LendingStatus::Approved)
-                                ->where('borrow_at', '>', now()),
-            'pending'  => $query->where('status', LendingStatus::Pending),
-            default    => $query->whereIn('status', [LendingStatus::Approved, LendingStatus::ReturnRequested])
-                                ->where('borrow_at', '<=', now()),
-        };
+    if (! in_array($tab, ['pending', 'approved', 'rejected'], true)) {
+        $tab = 'pending';
     }
 
-    public function adminIndex()
-    {
-        return view('admin.lendings.admin-index', [
-            'title' => 'Borrowing Requests'
-        ]);
-    }
+    $statuses = match ($tab) {
+        'approved' => [
+            LendingStatus::Approved->value,
+            LendingStatus::ReturnRequested->value,
+            LendingStatus::Returned->value,
+        ],
+        'rejected' => [LendingStatus::Rejected->value],
+        default => [LendingStatus::Pending->value],
+    };
+
+    $search = trim((string) $request->query('search', ''));
+
+    $lendings = Lending::with(['user' => fn ($query) => $query->withTrashed(), 'item'])
+        ->whereIn('status', $statuses)
+        ->when($search !== '', function ($query) use ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->whereHas('user', fn ($u) => $u->where('name', 'like', "%{$search}%"))
+                    ->orWhereHas('item', fn ($i) => $i
+                        ->where('name', 'like', "%{$search}%")
+                        ->orWhere('code', 'like', "%{$search}%"));
+            });
+        })
+        ->orderByDesc('id')
+        ->paginate(8)
+        ->withQueryString();
+
+    return view('admin.lendings.admin-index', [
+        'title' => 'Borrowing Requests',
+        'lendings' => $lendings,
+        'tab' => $tab,
+        'pendingCount' => Lending::where('status', LendingStatus::Pending->value)->count(),
+    ]);
+}
 
     /**
      * Form peminjaman. Wajib membawa ?item=ID dari halaman List of Items.

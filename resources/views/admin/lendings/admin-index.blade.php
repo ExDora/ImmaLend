@@ -18,12 +18,38 @@
                 <h1 class="text-3xl font-extrabold text-[#173863]">Borrowing Requests</h1>
                 <p class="text-sm text-[#173863]/70 mt-1">Review and manage incoming borrowing requests.</p>
 
+                @if (session('success'))
+                    <div class="mt-4 rounded-lg bg-green-100 text-green-700 text-sm font-medium px-4 py-3">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if (session('error'))
+                    <div class="mt-4 rounded-lg bg-red-100 text-red-700 text-sm font-medium px-4 py-3">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
+                @error('lending_id')
+                    <div class="mt-4 rounded-lg bg-red-100 text-red-700 text-sm font-medium px-4 py-3">
+                        {{ $message }}
+                    </div>
+                @enderror
+
+                @php
+                    $tabClass = fn (string $name) => $tab === $name
+                        ? 'pb-3 border-b-2 border-[#173863] text-[#173863] font-semibold text-sm'
+                        : 'pb-3 text-slate-400 font-medium text-sm';
+                @endphp
+
                 <!-- TABS -->
                 <div class="flex items-center gap-10 border-b border-slate-200 mt-6">
-                    <a href="" class="pb-3 border-b-2 border-[#173863] text-[#173863] font-semibold text-sm">Pending
-                        (11)</a>
-                    <a href="" class="pb-3 text-slate-400 font-medium text-sm">Approved</a>
-                    <a href="" class="pb-3 text-slate-400 font-medium text-sm">Rejected</a>
+                    <a href="{{ route('lendings.admin-index', ['status' => 'pending']) }}"
+                        class="{{ $tabClass('pending') }}">Pending ({{ $pendingCount }})</a>
+                    <a href="{{ route('lendings.admin-index', ['status' => 'approved']) }}"
+                        class="{{ $tabClass('approved') }}">Approved</a>
+                    <a href="{{ route('lendings.admin-index', ['status' => 'rejected']) }}"
+                        class="{{ $tabClass('rejected') }}">Rejected</a>
                 </div>
 
                 <!-- FILTERS -->
@@ -36,9 +62,11 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                         </svg>
                     </div>
-                    <form action="" method="GET"
+                    <form action="{{ route('lendings.admin-index') }}" method="GET"
                         class="flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-4 py-3 flex-1">
-                        <input type="text" name="search" placeholder="Select by student or item"
+                        <input type="hidden" name="status" value="{{ $tab }}">
+                        <input type="text" name="search" value="{{ request('search') }}"
+                            placeholder="Select by student or item"
                             class="w-full text-sm text-slate-600 placeholder-slate-400 outline-none bg-transparent">
                         <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                             stroke-width="2">
@@ -72,298 +100,84 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100 text-sm">
-                            <tr>
-                                <td class="px-6 py-4 text-slate-500 align-top">1</td>
-                                <td class="px-6 py-4 align-top">
-                                    <p class="font-semibold text-slate-700">Andreas Nathaniel</p>
-                                    <p class="text-xs text-slate-400">Student</p>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
-                                            <img src="{{ asset('images/items/Epson EB X05 Projector.jpg') }}" 
-                                                alt="Epson EB X05" class="w-full h-full object-cover">
+                            @forelse ($lendings as $lending)
+                                @php
+                                    $label = $lending->displayStatus();
+                                    $badge = match ($label) {
+                                        'Pending', 'Waiting confirmation' => 'bg-amber-100 text-amber-700',
+                                        'Rejected', 'Overdue' => 'bg-red-100 text-red-700',
+                                        'Completed' => 'bg-green-100 text-green-700',
+                                        'Borrowed' => 'bg-blue-100 text-blue-700',
+                                        'Upcoming' => 'bg-sky-100 text-sky-700',
+                                        default => 'bg-slate-100 text-slate-600',
+                                    };
+                                @endphp
+                                <tr>
+                                    <td class="px-6 py-4 text-slate-500 align-top">
+                                        {{ $lendings->firstItem() + $loop->index }}
+                                    </td>
+                                    <td class="px-6 py-4 align-top">
+                                        <p class="font-semibold text-slate-700">{{ $lending->user?->name }}</p>
+                                        <p class="text-xs text-slate-400">{{ $lending->user?->role->label() }}</p>
+                                    </td>
+                                    <td class="px-6 py-4 align-top">
+                                        <div class="flex items-center gap-3">
+                                            {{-- TODO: tampilkan foto barang setelah upload gambar di ItemController selesai --}}
+                                            <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div>
+                                            <div>
+                                                <p class="font-medium text-slate-700 truncate max-w-[160px]">
+                                                    {{ $lending->item->name }}</p>
+                                                <p class="text-xs text-slate-400">{{ $lending->item->code }}</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <p class="font-medium text-slate-700">Epson EB X05...</p>
-                                            <p class="text-xs text-slate-400">TEK-006</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 17, 2026<br><span
-                                        class="text-xs text-slate-400">15:00</span></td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 17, 2026<br><span
-                                        class="text-xs text-slate-400">17:00</span></td>
-                                <td class="px-6 py-4 align-top"><span
-                                        class="text-xs font-semibold bg-amber-100 text-amber-700 px-3 py-1.5 rounded-full">Pending</span>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-2"><button type="button"
-                                            class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Approve</button><button
-                                            type="button"
-                                            class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Reject</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 text-slate-500 align-top">2</td>
-                                <td class="px-6 py-4 align-top">
-                                    <p class="font-semibold text-slate-700">Brianna Rachel</p>
-                                    <p class="text-xs text-slate-400">Student</p>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
-                                            <img src="{{ asset('images/items/Power Strip.jpg') }}" 
-                                                alt="Power Strip" class="w-full h-full object-cover">
-                                        </div>
-                                        <div>
-                                            <p class="font-medium text-slate-700">Power Strip</p>
-                                            <p class="text-xs text-slate-400">TEK-008</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 17, 2026<br><span
-                                        class="text-xs text-slate-400">10:00</span></td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 17, 2026<br><span
-                                        class="text-xs text-slate-400">13:00</span></td>
-                                <td class="px-6 py-4 align-top"><span
-                                        class="text-xs font-semibold bg-amber-100 text-amber-700 px-3 py-1.5 rounded-full">Pending</span>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-2"><button type="button"
-                                            class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Approve</button><button
-                                            type="button"
-                                            class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Reject</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 text-slate-500 align-top">3</td>
-                                <td class="px-6 py-4 align-top">
-                                    <p class="font-semibold text-slate-700">Christopher Rafael</p>
-                                    <p class="text-xs text-slate-400">Student</p>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
-                                            <img src="{{ asset('images/items/Keyboard Logitech K120.jpg') }}" 
-                                                alt="Keyboard Logitech" class="w-full h-full object-cover">
-                                        </div>
-                                        <div>
-                                            <p class="font-medium text-slate-700">Keyboard Log...</p>
-                                            <p class="text-xs text-slate-400">TEK-005</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 16, 2026<br><span
-                                        class="text-xs text-slate-400">09:00</span></td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 16, 2026<br><span
-                                        class="text-xs text-slate-400">10:30</span></td>
-                                <td class="px-6 py-4 align-top"><span
-                                        class="text-xs font-semibold bg-amber-100 text-amber-700 px-3 py-1.5 rounded-full">Pending</span>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-2"><button type="button"
-                                            class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Approve</button><button
-                                            type="button"
-                                            class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Reject</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 text-slate-500 align-top">4</td>
-                                <td class="px-6 py-4 align-top">
-                                    <p class="font-semibold text-slate-700">Devina Valencia</p>
-                                    <p class="text-xs text-slate-400">Student</p>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
-                                            <img src="{{ asset('images/items/Lenovo Ideapad 3.png') }}" 
-                                                alt="Lenovo Ideapad 3" class="w-full h-full object-cover">
-                                        </div>
-                                        <div>
-                                            <p class="font-medium text-slate-700">Lenovo Ideap...</p>
-                                            <p class="text-xs text-slate-400">TEK-002</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 16, 2026<br><span
-                                        class="text-xs text-slate-400">07:00</span></td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 16, 2026<br><span
-                                        class="text-xs text-slate-400">09:35</span></td>
-                                <td class="px-6 py-4 align-top"><span
-                                        class="text-xs font-semibold bg-amber-100 text-amber-700 px-3 py-1.5 rounded-full">Pending</span>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-2"><button type="button"
-                                            class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Approve</button><button
-                                            type="button"
-                                            class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Reject</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 text-slate-500 align-top">5</td>
-                                <td class="px-6 py-4 align-top">
-                                    <p class="font-semibold text-slate-700">Ezra Zefanya</p>
-                                    <p class="text-xs text-slate-400">Teacher</p>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
-                                            <img src="{{ asset('images/rooms/Coworking.jpeg') }}" 
-                                                alt="Co-Working" class="w-full h-full object-cover">
-                                        </div>
-                                        <div>
-                                            <p class="font-medium text-slate-700">Co-Working</p>
-                                            <p class="text-xs text-slate-400">RM-002</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 16, 2026<br><span
-                                        class="text-xs text-slate-400">09:55</span></td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 16, 2026<br><span
-                                        class="text-xs text-slate-400">11:15</span></td>
-                                <td class="px-6 py-4 align-top"><span
-                                        class="text-xs font-semibold bg-amber-100 text-amber-700 px-3 py-1.5 rounded-full">Pending</span>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-2"><button type="button"
-                                            class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Approve</button><button
-                                            type="button"
-                                            class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Reject</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 text-slate-500 align-top">6</td>
-                                <td class="px-6 py-4 align-top">
-                                    <p class="font-semibold text-slate-700">Felicia Gracia</p>
-                                    <p class="text-xs text-slate-400">Felicia</p>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
-                                            <img src="{{ asset('images/rooms/Studio.jpeg') }}" 
-                                                alt="Studio" class="w-full h-full object-cover">
-                                        </div>
-                                        <div>
-                                            <p class="font-medium text-slate-700">Studio</p>
-                                            <p class="text-xs text-slate-400">RM-004</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 16, 2026<br><span
-                                        class="text-xs text-slate-400">10:00</span></td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 16, 2026<br><span
-                                        class="text-xs text-slate-400">12:00</span></td>
-                                <td class="px-6 py-4 align-top"><span
-                                        class="text-xs font-semibold bg-amber-100 text-amber-700 px-3 py-1.5 rounded-full">Pending</span>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-2"><button type="button"
-                                            class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Approve</button><button
-                                            type="button"
-                                            class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Reject</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 text-slate-500 align-top">7</td>
-                                <td class="px-6 py-4 align-top">
-                                    <p class="font-semibold text-slate-700">Gabriel Lie</p>
-                                    <p class="text-xs text-slate-400">Student</p>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
-                                            <img src="{{ asset('images/items/Amplifier Fender.png') }}" 
-                                                alt="Amplifier Fender" class="w-full h-full object-cover">
-                                        </div>
-                                        <div>
-                                            <p class="font-medium text-slate-700">Amplifier Fen...</p>
-                                            <p class="text-xs text-slate-400">MUS-007</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 15, 2026<br><span
-                                        class="text-xs text-slate-400">07:00</span></td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 15, 2026<br><span
-                                        class="text-xs text-slate-400">13:55</span></td>
-                                <td class="px-6 py-4 align-top"><span
-                                        class="text-xs font-semibold bg-amber-100 text-amber-700 px-3 py-1.5 rounded-full">Pending</span>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-2"><button type="button"
-                                            class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Approve</button><button
-                                            type="button"
-                                            class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Reject</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 text-slate-500 align-top">8</td>
-                                <td class="px-6 py-4 align-top">
-                                    <p class="font-semibold text-slate-700">Hanna Maria</p>
-                                    <p class="text-xs text-slate-400">Student</p>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0">
-                                            <img src="{{ asset('images/items/Microphone.webp') }}" 
-                                                alt="Microphone" class="w-full h-full object-cover">
-                                        </div>
-                                        <div>
-                                            <p class="font-medium text-slate-700">Microphone</p>
-                                            <p class="text-xs text-slate-400">MUS-003</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 15, 2026<br><span
-                                        class="text-xs text-slate-400">07:00</span></td>
-                                <td class="px-6 py-4 text-slate-600 align-top">May 15, 2026<br><span
-                                        class="text-xs text-slate-400">13:55</span></td>
-                                <td class="px-6 py-4 align-top"><span
-                                        class="text-xs font-semibold bg-amber-100 text-amber-700 px-3 py-1.5 rounded-full">Pending</span>
-                                </td>
-                                <td class="px-6 py-4 align-top">
-                                    <div class="flex items-center gap-2"><button type="button"
-                                            class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Approve</button><button
-                                            type="button"
-                                            class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Reject</button>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td class="px-6 py-4 text-slate-600 align-top">
+                                        {{ $lending->borrow_at->format('M d, Y') }}<br>
+                                        <span class="text-xs text-slate-400">{{ $lending->borrow_at->format('H:i') }}</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-slate-600 align-top">
+                                        {{ $lending->return_at->format('M d, Y') }}<br>
+                                        <span class="text-xs text-slate-400">{{ $lending->return_at->format('H:i') }}</span>
+                                    </td>
+                                    <td class="px-6 py-4 align-top">
+                                        <span class="text-xs font-semibold {{ $badge }} px-3 py-1.5 rounded-full">
+                                            {{ $label }}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 align-top">
+                                        @if ($lending->status === \App\Enums\LendingStatus::Pending)
+                                            <div class="flex items-center gap-2">
+                                                {{-- Approve belum dihubungkan (ApproveLendingController belum dikerjakan) --}}
+                                                <button type="button"
+                                                    class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Approve</button>
+
+                                                <form action="{{ route('lendings.reject') }}" method="POST"
+                                                    onsubmit="return confirm('Reject this borrowing request?')">
+                                                    @csrf
+                                                    <input type="hidden" name="lending_id" value="{{ $lending->id }}">
+                                                    <button type="submit"
+                                                        class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Reject</button>
+                                                </form>
+                                            </div>
+                                        @else
+                                            <span class="text-xs text-slate-400">-</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="7" class="px-6 py-10 text-center text-slate-400">
+                                        No borrowing requests found.
+                                    </td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
 
                 <!-- PAGINATION -->
-                <div class="flex items-center justify-center gap-2 mt-6">
-                    <button type="button"
-                        class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                        </svg>
-                    </button>
-                    <button type="button"
-                        class="w-9 h-9 flex items-center justify-center rounded-lg bg-[#173863] text-white text-sm font-semibold">1</button>
-                    <button type="button"
-                        class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 text-sm font-semibold">2</button>
-                    <button type="button"
-                        class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 text-sm font-semibold">3</button>
-                    <button type="button"
-                        class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 text-sm font-semibold">4</button>
-                    <button type="button"
-                        class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 text-sm font-semibold">5</button>
-                    <button type="button"
-                        class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                    </button>
+                <div class="mt-6">
+                    {{ $lendings->links() }}
                 </div>
 
             </main>
