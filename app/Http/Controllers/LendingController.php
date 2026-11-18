@@ -17,14 +17,29 @@ class LendingController extends Controller
     private const RETURN_TIME = '15:00';
 
     /**
-     * Display a listing of the resource.
+     * Daftar peminjaman milik user yang login (tab: current, upcoming, pending).
      */
-    public function index()
+    public function index(Request $request)
     {
-        $title = "ImmaLend - Lending List";
+        $userId = $request->user()->id;
+        $tab = $request->query('tab', 'current');
+
+        $counts = [
+            'current'  => $this->tabQuery($userId, 'current')->count(),
+            'upcoming' => $this->tabQuery($userId, 'upcoming')->count(),
+            'pending'  => $this->tabQuery($userId, 'pending')->count(),
+        ];
+
+        $lendings = $this->tabQuery($userId, $tab)
+            ->with('item')
+            ->latest('borrow_at')
+            ->get();
 
         return view('public.lendings.index', [
-            'title' => $title
+            'title'     => 'ImmaLend - My Borrowings',
+            'lendings'  => $lendings,
+            'counts'    => $counts,
+            'activeTab' => $tab,
         ]);
     }
 
