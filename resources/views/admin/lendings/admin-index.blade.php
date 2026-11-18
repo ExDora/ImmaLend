@@ -37,7 +37,7 @@
                 @enderror
 
                 @php
-                    $tabClass = fn (string $name) => $tab === $name
+                    $tabClass = fn(string $name) => $tab === $name
                         ? 'pb-3 border-b-2 border-[#173863] text-[#173863] font-semibold text-sm'
                         : 'pb-3 text-slate-400 font-medium text-sm';
                 @endphp
@@ -122,11 +122,13 @@
                                     </td>
                                     <td class="px-6 py-4 align-top">
                                         <div class="flex items-center gap-3">
-                                            {{-- TODO: tampilkan foto barang setelah upload gambar di ItemController selesai --}}
+                                            {{-- TODO: tampilkan foto barang setelah upload gambar di ItemController selesai
+                                            --}}
                                             <div class="w-10 h-10 rounded-lg bg-slate-100 shrink-0"></div>
                                             <div>
                                                 <p class="font-medium text-slate-700 truncate max-w-[160px]">
-                                                    {{ $lending->item->name }}</p>
+                                                    {{ $lending->item->name }}
+                                                </p>
                                                 <p class="text-xs text-slate-400">{{ $lending->item->code }}</p>
                                             </div>
                                         </div>
@@ -148,8 +150,13 @@
                                         @if ($lending->status === \App\Enums\LendingStatus::Pending)
                                             <div class="flex items-center gap-2">
                                                 {{-- Approve belum dihubungkan (ApproveLendingController belum dikerjakan) --}}
-                                                <button type="button"
-                                                    class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Approve</button>
+                                                <form action="{{ route('lendings.approve') }}" method="POST"
+                                                    onsubmit="return confirm('Approve this borrowing request?')">
+                                                    @csrf
+                                                    <input type="hidden" name="lending_id" value="{{ $lending->id }}">
+                                                    <button type="submit"
+                                                        class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Approve</button>
+                                                </form>
 
                                                 <form action="{{ route('lendings.reject') }}" method="POST"
                                                     onsubmit="return confirm('Reject this borrowing request?')">
