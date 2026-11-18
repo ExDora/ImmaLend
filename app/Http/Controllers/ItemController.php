@@ -11,12 +11,26 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $title = "ImmaLend - Item List";
+        $items = Item::with('category')
+            ->when($request->filled('category'), fn($query) => $query->whereHas(
+                'category',
+                fn($category) => $category->where('name', $request->query('category'))
+            ))
+            ->when($request->filled('search'), fn($query) => $query->where(
+                'name',
+                'like',
+                '%' . $request->query('search') . '%'
+            ))
+            ->orderBy('category_id')
+            ->orderBy('code')
+            ->paginate(8)
+            ->withQueryString();
 
         return view('public.items.index', [
-            'title' => $title
+            'title' => 'ImmaLend - Item List',
+            'items' => $items,
         ]);
     }
 
@@ -49,15 +63,15 @@ class ItemController extends Controller
      */
     public function show(string $id)
     {
-         $title = "ImmaLend - Show Item";
+        $title = "ImmaLend - Show Item";
 
 
         $item = Item::with('category')->findOrFail($id);
 
         return view('items.show', [
-        'title' => $title,
-        'item' => $item,
-    ]);
+            'title' => $title,
+            'item' => $item,
+        ]);
     }
 
     /**
@@ -83,11 +97,11 @@ class ItemController extends Controller
             'title' => $title
         ]);
     }
-    
+
     /**
      * Validate and receive the request item form.
      */
-       public function submitRequest(Request $request)
+    public function submitRequest(Request $request)
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:100'],

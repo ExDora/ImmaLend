@@ -21,26 +21,32 @@
                         <!-- ITEM IMAGE + INFO CARD -->
                         <div class="bg-[#EEF2F6] border border-[#B6B6B6] rounded-2xl p-5 shrink-0">
                             <div class="bg-white rounded-xl h-44 flex items-center justify-center overflow-hidden">
-                                <svg class="w-20 h-16 text-slate-300" viewBox="0 0 48 32" fill="none" stroke="currentColor"
-                                    stroke-width="1.5">
-                                    <rect x="6" y="4" width="36" height="20" rx="2" />
-                                    <path d="M18 28h12M24 24v4" stroke-linecap="round" />
-                                </svg>
+                                @if ($item->imageUrl())
+                                    <img src="{{ $item->imageUrl() }}" alt="{{ $item->name }}"
+                                        class="h-full w-full object-contain">
+                                @else
+                                    <svg class="w-20 h-16 text-slate-300" viewBox="0 0 48 32" fill="none" stroke="currentColor"
+                                        stroke-width="1.5">
+                                        <rect x="6" y="4" width="36" height="20" rx="2" />
+                                        <path d="M18 28h12M24 24v4" stroke-linecap="round" />
+                                    </svg>
+                                @endif
                             </div>
 
                             <span
                                 class="inline-block mt-4 text-[11px] font-semibold bg-blue-100 text-[#082B6D] px-2.5 py-1 rounded-full">
-                                Technology
+                                {{ $item->category->name }}
                             </span>
 
-                            <p class="text-sm font-bold text-[#082B6D] mt-2">Monitor LG 24 Inch</p>
+                            <p class="text-sm font-bold text-[#082B6D] mt-2">{{ $item->name }}</p>
 
                             <div class="flex items-center justify-between mt-2">
                                 <span class="flex items-center gap-1.5 text-xs text-green-600 font-medium">
                                     <span class="w-2 h-2 rounded-full bg-green-500"></span>
                                     Available
                                 </span>
-                                <span class="text-xs text-slate-500">6 units</span>
+                                <span class="text-xs text-slate-500">{{ $item->available }}
+                                    {{ $item->available === 1 ? 'unit' : 'units' }}</span>
                             </div>
                         </div>
 
@@ -49,18 +55,21 @@
                             <h2 class="text-lg font-bold text-[#082B6D] text-center mb-4">Item Details</h2>
 
                             <div class="text-sm text-slate-700 leading-relaxed space-y-0.5">
-                                <p><span class="font-semibold text-[#082B6D]">Item Name:</span> LG 24-Inch Monitor</p>
-                                <p><span class="font-semibold text-[#082B6D]">Item Code:</span> TEK-006</p>
-                                <p><span class="font-semibold text-[#082B6D]">Category:</span> Monitor</p>
-                                <p><span class="font-semibold text-[#082B6D]">Location:</span> Computer Lab 2</p>
-                                <p><span class="font-semibold text-[#082B6D]">Condition:</span> Good</p>
+                                <p><span class="font-semibold text-[#082B6D]">Item Name:</span> {{ $item->name }}</p>
+                                <p><span class="font-semibold text-[#082B6D]">Item Code:</span> {{ $item->code }}</p>
+                                <p><span class="font-semibold text-[#082B6D]">Category:</span> {{ $item->category->name }}
+                                </p>
+                                <p><span class="font-semibold text-[#082B6D]">Location:</span> {{ $item->location }}</p>
+                                <p><span class="font-semibold text-[#082B6D]">Condition:</span>
+                                    {{ ucfirst($item->condition) }}</p>
                             </div>
 
-                            <div class="mt-4 text-sm text-slate-700 leading-relaxed">
-                                <p class="font-semibold text-[#082B6D] mb-1">Specifications:</p>
-                                <p>LG 24-inch monitor, Full HD 1920 x 1080 resolution, IPS panel, up to 75 Hz refresh
-                                    rate, HDMI and VGA connectivity, and widescreen display.</p>
-                            </div>
+                            @if ($item->specifications)
+                                <div class="mt-4 text-sm text-slate-700 leading-relaxed">
+                                    <p class="font-semibold text-[#082B6D] mb-1">Specifications:</p>
+                                    <p>{{ $item->specifications }}</p>
+                                </div>
+                            @endif
                         </div>
                     </div>
 
@@ -75,6 +84,12 @@
                         <form action="{{ route('lendings.store') }}" method="POST" class="space-y-5">
                             @csrf
 
+                            @if ($errors->any())
+                                <div class="p-3 bg-red-100 text-red-700 text-sm rounded-lg border border-red-200">
+                                    {{ $errors->first() }}
+                                </div>
+                            @endif
+
                             <div>
                                 <label for="name" class="flex items-center gap-2 text-sm font-semibold text-[#082B6D] mb-2">
                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -84,8 +99,8 @@
                                     </svg>
                                     Name
                                 </label>
-                                <input type="text" id="name" name="name" placeholder="Type your fullname here"
-                                    class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-700 placeholder-slate-400 outline-none focus:border-[#082B6D]">
+                                <input type="text" id="name" value="{{ auth()->user()->name }}" readonly
+                                    class="w-full bg-slate-100 border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-700 placeholder-slate-400 outline-none focus:border-[#082B6D]">
                             </div>
 
                             <div>
@@ -98,10 +113,9 @@
                                     </svg>
                                     Class
                                 </label>
-                                <select id="class" name="class_id"
-                                    class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-400 outline-none focus:border-[#082B6D]">
-                                    <option value="" selected disabled>Choose your class here</option>
-                                </select>
+                                <input type="text" id="class"
+                                    value="{{ auth()->user()->profile?->schoolClass?->name ?? '-' }}" readonly
+                                    class="w-full bg-slate-100 border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:border-[#082B6D]">
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -117,7 +131,7 @@
                                     </label>
                                     <select id="item" name="item_id"
                                         class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:border-[#082B6D]">
-                                        <option value="1" selected>Monitor LG 24 Inch</option>
+                                        <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
                                     </select>
                                 </div>
                                 <div>
@@ -131,18 +145,19 @@
                                         Amount
                                     </label>
                                     <div class="flex items-center bg-white border border-[#B6B6B6] rounded-xl px-4 py-1">
-                                        <input type="number" id="amount" name="amount" min="1" value="1"
+                                        <input type="number" id="amount" name="amount" min="1" max="{{ $item->available }}"
+                                            value="{{ old('amount', 1) }}" required
                                             placeholder="Choose the amount of item here"
                                             class="flex-1 py-2 text-sm text-slate-700 placeholder-slate-400 outline-none min-w-0 bg-transparent">
                                         <div class="flex items-center gap-2 shrink-0">
-                                            <button type="button"
+                                            <button type="button" data-step="-1"
                                                 class="w-7 h-7 rounded-full bg-[#082B6D] text-white flex items-center justify-center">
                                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                                     stroke-width="2">
                                                     <path stroke-linecap="round" d="M5 12h14" />
                                                 </svg>
                                             </button>
-                                            <button type="button"
+                                            <button type="button" data-step="1"
                                                 class="w-7 h-7 rounded-full bg-[#082B6D] text-white flex items-center justify-center">
                                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                                     stroke-width="2">
@@ -165,7 +180,8 @@
                                         </svg>
                                         Borrowing Date
                                     </label>
-                                    <input type="date" id="borrow_date" name="borrow_date"
+                                    <input type="date" id="borrow_date" name="borrow_date" required
+                                        min="{{ now()->toDateString() }}" value="{{ old('borrow_date') }}"
                                         placeholder="Choose the date here"
                                         class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-500 outline-none focus:border-[#082B6D]">
                                 </div>
@@ -179,7 +195,8 @@
                                         </svg>
                                         Returning Date
                                     </label>
-                                    <input type="date" id="return_date" name="return_date"
+                                    <input type="date" id="return_date" name="return_date" required
+                                        min="{{ now()->toDateString() }}" value="{{ old('return_date') }}"
                                         placeholder="Choose the date here"
                                         class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-500 outline-none focus:border-[#082B6D]">
                                 </div>
@@ -195,8 +212,9 @@
                                     </svg>
                                     Reason for borrowing
                                 </label>
-                                <textarea id="reason" name="reason" rows="4" placeholder="Explain your reasonings here"
-                                    class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-700 placeholder-slate-400 outline-none resize-none focus:border-[#082B6D]"></textarea>
+                                <textarea id="reason" name="reason" rows="4" required maxlength="500"
+                                    placeholder="Explain your reasonings here"
+                                    class="w-full bg-white border border-[#B6B6B6] rounded-xl px-4 py-3 text-sm text-slate-700 placeholder-slate-400 outline-none resize-none focus:border-[#082B6D]">{{ old('reason') }}</textarea>
                             </div>
 
                             <div class="flex items-center gap-4 pt-2">
@@ -215,4 +233,19 @@
             </main>
         </div>
     </div>
+
+    <script>
+        const amountInput = document.getElementById('amount');
+
+        document.querySelectorAll('[data-step]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const step = parseInt(button.dataset.step, 10);
+                const min = parseInt(amountInput.min, 10) || 1;
+                const max = parseInt(amountInput.max, 10) || Infinity;
+                const next = (parseInt(amountInput.value, 10) || min) + step;
+
+                amountInput.value = Math.min(Math.max(next, min), max);
+            });
+        });
+    </script>
 @endsection
