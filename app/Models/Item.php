@@ -24,4 +24,16 @@ class Item extends Model
     {
         return $this->hasMany(Lending::class);
     }
+
+    /** URL gambar: file bawaan project (images/...) atau hasil upload (storage). */
+    public function imageUrl(): ?string
+    {
+        if (!$this->image) {
+            return null;
+        }
+
+        return str_starts_with($this->image, 'images/')
+            ? asset($this->image)
+            : asset('storage/' . $this->image);
+    }
 }
